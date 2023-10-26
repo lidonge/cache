@@ -1,6 +1,7 @@
 package cache.client;
 
 import cache.ICacheData;
+import cache.ICompositeKey;
 import cache.ILogable;
 
 /**
@@ -15,12 +16,12 @@ public interface ICache extends ILogable {
     IClient getClient();
     /**
      * Get specified data from cache.
-     * @param keys
+     * @param key
      * @return
      */
-    default IClientCacheData get(String[] keys){
+    default IClientCacheData get(ICompositeKey key){
         IPhysicalCache pc = getPhysicalCache();
-        String compKey = pc.getKeyCompositor().compositKeys(keys);
+        String compKey = key.getCompositeKey();
 
         IClientCacheData data = refresh(compKey);
         getLogger().info("Client {} get {} value {} from client cache.", getClient().getName(),compKey,data);

@@ -4,47 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="Finish core logic and interfaces">
-      <change afterPath="$PROJECT_DIR$/core/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/IBaseCenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/IBaseClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/ILogable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/IAsynListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenterCacheData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/IVirtualClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/IClientCacheData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/impls/center/AbstractPhysicalCenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/impls/util/ITimeoutListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/impls/util/LockerByName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/impls/util/TimeoutUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/resources/logback.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/DemoCacheData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/ClientCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/Center.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/PhysicalCenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/Source.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" afterDir="false" />
+    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="Move core code to core module,add simple demo module">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/IApplicationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/IApplicationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/ICacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/ICacheData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/IKeyCompositor.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/IKeyCompositor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/IVirtualCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/IVirtualCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/IVirtualClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/center/ICenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/center/IPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/IPhysicalCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/client/ICache.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/ICache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/client/IClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/IClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/client/IClientRegister.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/client/IPhysicalCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/IPhysicalCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/source/IContentChangedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/source/IContentChangedListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/source/ISource.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/source/ISource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/IKeyCompositor.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/IKeyCompositor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/ICache.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/ICache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IPhysicalCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/IPhysicalCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/source/IContentChangedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/source/IContentChangedListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/source/ISource.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/source/ISource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/Source.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/Source.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +104,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1698111527983</updated>
-      <workItem from="1698111529211" duration="66749000" />
+      <workItem from="1698111529211" duration="68529000" />
     </task>
     <task id="LOCAL-00001" summary="Finish core logic and interfaces">
       <option name="closed" value="true" />
@@ -145,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698146250522</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Move core code to core module,add simple demo module">
+      <option name="closed" value="true" />
+      <created>1698273987669</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698273987669</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +141,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Finish core logic and interfaces" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finish core logic and interfaces" />
+    <MESSAGE value="Move core code to core module,add simple demo module" />
+    <option name="LAST_COMMIT_MESSAGE" value="Move core code to core module,add simple demo module" />
   </component>
 </project>

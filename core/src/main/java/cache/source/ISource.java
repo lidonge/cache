@@ -1,6 +1,6 @@
 package cache.source;
 
-import cache.IKeyCompositor;
+import cache.ICompositeKey;
 import cache.client.IVirtualCenter;
 
 /**
@@ -9,8 +9,8 @@ import cache.client.IVirtualCenter;
  */
 public interface ISource extends IContentChangedListener {
     @Override
-    default void onContentChanged(String[] keys){
-        String compKey = getKeyCompositor().compositKeys(keys);
+    default void onContentChanged(ICompositeKey keys){
+        String compKey = keys.getCompositeKey();
 //        ICacheData cached = loadCachedDataFromStorage(compKey);
         IVirtualCenter center = getCenter();
         center.onCacheChanged(compKey);
@@ -21,10 +21,4 @@ public interface ISource extends IContentChangedListener {
      * @return
      */
     IVirtualCenter getCenter();
-
-    /**
-     * Get the key compositor.
-     * @return
-     */
-    IKeyCompositor getKeyCompositor();
 }

@@ -1,10 +1,13 @@
 package cache.simpledemo;
 
 
+import cache.ICompositeKey;
 import cache.ILogable;
-import cache.simpledemo.impls.client.*;
+import cache.simpledemo.impls.client.Client;
+import cache.simpledemo.impls.client.ClientCache;
+import cache.simpledemo.impls.client.PhysicalClientCache;
+import cache.simpledemo.impls.client.VirtualCenterInClient;
 import cache.simpledemo.impls.source.Center;
-import cache.simpledemo.impls.source.PhysicalCenter;
 import cache.simpledemo.impls.source.Source;
 import cache.simpledemo.impls.source.VirtualCenterInSource;
 
@@ -14,9 +17,21 @@ import cache.simpledemo.impls.source.VirtualCenterInSource;
 public class AllInOneDemo implements ILogable {
     private Source source;
     private Center center;
-//    private Client[] clients;
+    //    private Client[] clients;
     private int clientCount = 2;
-    private String[] keys_1 = new String[]{"categorize","type","name"};
+    private ICompositeKey keys_1 = new ICompositeKey() {
+        String[] keys = new String[]{"categorize", "type", "name"};
+        @Override
+        public String getCompositeKey() {
+            return ICompositeKey.compositeKeys(keys,getSeparator());
+        }
+
+        @Override
+        public String getSeparator() {
+            return "_";
+        }
+    };
+
     private Worker<Client>[] clientWorkers;
     private Worker<Source> srcWorker;
     public static void main(String[] args) {
@@ -68,7 +83,7 @@ public class AllInOneDemo implements ILogable {
         }
     }
 
-    void scenarioClientGet(Worker<Client> worker, String[] keys){
+    void scenarioClientGet(Worker<Client> worker, ICompositeKey keys){
         worker.setTask(() ->{
             Client client =worker.getTarget();
             getLogger().info("{} scenarioClientGet value is {}.",client.getName(),client.getCache().get(keys));

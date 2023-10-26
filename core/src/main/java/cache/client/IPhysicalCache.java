@@ -1,7 +1,5 @@
 package cache.client;
 
-import cache.IKeyCompositor;
-
 /**
  * @author lidong@date 2023-10-24@version 1.0
  * A physical cache implement by client application.
@@ -13,12 +11,6 @@ public interface IPhysicalCache {
      * @return
      */
     boolean isAllAgreed(String key);
-
-    /**
-     * Get key compositor.
-     * @return
-     */
-    IKeyCompositor getKeyCompositor();
 
     /**
      * Refresh local cache from remote source side or redis.

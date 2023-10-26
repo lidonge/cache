@@ -1,13 +1,10 @@
 package cache.simpledemo.impls.client;
 
-import cache.IKeyCompositor;
 import cache.ILogable;
 import cache.client.IClient;
 import cache.client.IClientCacheData;
 import cache.client.IPhysicalCache;
-import cache.client.IVirtualCenter;
 import cache.impls.util.LockerByName;
-import cache.simpledemo.impls.source.PhysicalCenter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,11 +33,6 @@ public class PhysicalClientCache implements IPhysicalCache, ILogable {
     @Override
     public boolean isAllAgreed(String key) {
         return virtualCenter.isAgreementReached(key);
-    }
-
-    @Override
-    public IKeyCompositor getKeyCompositor() {
-        return IKeyCompositor.getDefaultKeyCompositor();
     }
 
     @Override
