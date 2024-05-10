@@ -4,23 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="change String[] keys to an interface ICompositeKey">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="Changed from Center actively updating data to Client updating data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/IBaseCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/IBaseCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/IPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/IPhysicalCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/ICache.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/ICache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/IClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IClientCacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/IClientCacheData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IPhysicalCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/IPhysicalCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/impls/center/AbstractPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/impls/center/AbstractPhysicalCenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/DemoCacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/DemoCacheData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/PhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/PhysicalCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +115,7 @@
       <workItem from="1700711907452" duration="388000" />
       <workItem from="1701229491039" duration="1248000" />
       <workItem from="1715132440745" duration="5706000" />
-      <workItem from="1715150929784" duration="22215000" />
+      <workItem from="1715150929784" duration="23206000" />
     </task>
     <task id="LOCAL-00001" summary="Finish core logic and interfaces">
       <option name="closed" value="true" />
@@ -155,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698283298640</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Changed from Center actively updating data to Client updating data">
+      <option name="closed" value="true" />
+      <created>1715310795444</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715310795444</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +170,7 @@
     <MESSAGE value="Finish core logic and interfaces" />
     <MESSAGE value="Move core code to core module,add simple demo module" />
     <MESSAGE value="change String[] keys to an interface ICompositeKey" />
-    <option name="LAST_COMMIT_MESSAGE" value="change String[] keys to an interface ICompositeKey" />
+    <MESSAGE value="Changed from Center actively updating data to Client updating data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed from Center actively updating data to Client updating data" />
   </component>
 </project>

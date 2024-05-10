@@ -38,8 +38,8 @@ public class AllInOneDemo implements ILogable {
     private Worker<Source> srcWorker;
     public static void main(String[] args) {
         AllInOneDemo demo = new AllInOneDemo();
-//        demo.scenarioClientGet(demo.clientWorkers[0], demo.keys_1);
-        demo.updateAndGet();
+        demo.scenarioClientGet(demo.clientWorkers[0], demo.keys_1);
+//        demo.updateAndGet();
     }
 
     public AllInOneDemo() {
