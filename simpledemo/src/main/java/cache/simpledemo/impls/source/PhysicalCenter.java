@@ -18,6 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class PhysicalCenter extends AbstractPhysicalCenter implements ILogable {
     private Map<String, ICenterCacheData> localCache = new HashMap<>();
     private Map<String, Boolean> agreementFlags = new ConcurrentHashMap<>();
+    private Map<String, Boolean> dirtyMap = new ConcurrentHashMap<>();
 
     private LockerByName locker = new LockerByName();
     @Override
@@ -30,14 +31,26 @@ public class PhysicalCenter extends AbstractPhysicalCenter implements ILogable {
         agreementFlags.put(compKey, true);
     }
 
+    @Override
     public boolean isAgreementReached(String compKey) {
-        return agreementFlags.get(compKey);
+        Boolean b = agreementFlags.get(compKey);
+        return b == null || b;
+    }
+    @Override
+    public void setDirty(String compKey, boolean dirty) {
+        dirtyMap.put(compKey, dirty);
     }
 
     @Override
-    public void makeNewDataAvailable(String compKey) {
-        localCache.put(compKey, new DemoCacheData(compKey));
+    public boolean isDirty(String compKey) {
+        Boolean b = dirtyMap.get(compKey);
+        return b == null || b;
     }
+
+//    @Override
+//    public void makeNewDataAvailable(String compKey) {
+//        localCache.put(compKey, new DemoCacheData(compKey));
+//    }
 
     @Override
     public boolean isConsistencyFirst() {
@@ -66,5 +79,10 @@ public class PhysicalCenter extends AbstractPhysicalCenter implements ILogable {
     @Override
     public void waitAllClientFinish(List<IAsynListener> asynListeners) {
         //TODO
+    }
+
+    @Override
+    public void putToLocalCache(String compKey, ICenterCacheData cacheData) {
+        localCache.put(compKey,cacheData);
     }
 }

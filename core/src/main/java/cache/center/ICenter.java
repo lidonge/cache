@@ -3,7 +3,6 @@ package cache.center;
 import cache.IBaseCenter;
 import cache.IBaseClient;
 import cache.ILogable;
-import cache.client.IVirtualCenter;
 import cache.impls.util.ITimeoutListener;
 
 import java.util.ArrayList;
@@ -24,13 +23,13 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
     @Override
     default ICenterCacheData get(String compKey){
         IPhysicalCenter pc = getPhysicalCenter();
-        ICenterCacheData ret = pc.getFromLocalCache(compKey);
+        ICenterCacheData ret = null;
         Object locker = pc.getLocker(compKey);
         synchronized (locker) {
-            boolean dirty = ret == null;
-            if (dirty) {
+            //TODO. Here need to consider the situation of newly registered clients， if the agreement is not reached
+            boolean dirty = pc.isDirty(compKey);
+            if (!dirty ) {
                 //The data is dirty
-                pc.makeNewDataAvailable(compKey);
                 ret = pc.getFromLocalCache(compKey);
             }
             getLogger().info("Get data {} from center, value is {}, dirty flag is {}." ,compKey,ret, dirty);
@@ -38,15 +37,44 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
         }
     }
 
+    @Override
+    default void put(String compKey, ICenterCacheData cacheData) {
+        IPhysicalCenter pc = getPhysicalCenter();
+        Object locker = pc.getLocker(compKey);
+        synchronized (locker) {
+            if(pc.isDirty(compKey)) {
+                if(pc.isAgreementReached(compKey)) {
+                    pc.setDirty(compKey, false);
+                    pc.putToLocalCache(compKey, cacheData);
+                    getLogger().info("Put data {} to center, value is {}." ,compKey,cacheData);
+                }else{
+                    throw new RuntimeException("Unexpected assignment error of key:" + compKey);
+                }
+            }
+        }
+    }
+
    @Override
     default void onCacheChanged(String compKey){
         IPhysicalCenter pc = getPhysicalCenter();
-        //clear agreement marker of the center
-        pc.clearAgreementFlag(compKey);
+        Object locker = pc.getLocker(compKey);
+        boolean bNeedNotify = false;
+        synchronized (locker) {
+            //This judgment is used to optimize the situation where the source is continuously updated.
+            if(!pc.isDirty(compKey)) {
+                //clear agreement marker of the center
+                pc.clearAgreementFlag(compKey);
+//                pc.setDirty(compKey, true);
+                bNeedNotify = true;
+            }
+        }
         //start agreement timeout monitor
 //        TimeoutUtil.getInstance().addMonitor(this,compKey,pc.getAgreeTimeout());
-        //notify all client to prepare dirty
-        notifyAllPrepareDirty(compKey);
+       if(bNeedNotify) {
+           //notify all client to prepare dirty
+           notifyAllPrepareDirty(compKey);
+       }
+
     }
 
     /**
@@ -54,10 +82,14 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
      * @param compKey
      */
     default void onAgreementReached(String compKey){
-        //make new data available
-        getPhysicalCenter().makeNewDataAvailable(compKey);
-        //set agreement marker of the center
-        getPhysicalCenter().setAgreementFlag(compKey);
+        IPhysicalCenter pc = getPhysicalCenter();
+        Object locker = pc.getLocker(compKey);
+        synchronized (locker) {
+            //clear cache
+            pc.putToLocalCache(compKey, null);
+            //set agreement marker of the center
+            pc.setAgreementFlag(compKey);
+        }
     }
 
     /**
@@ -84,7 +116,7 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
     }
 
     @Override
-    default void unrigister(String name ){
+    default void unregisterClient(String name ){
         Map<String, IVirtualClient> clients = getPhysicalCenter().getClients();
         clients.remove(name);
     }

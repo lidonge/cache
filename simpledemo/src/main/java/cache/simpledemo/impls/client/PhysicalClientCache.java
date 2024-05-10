@@ -1,6 +1,7 @@
 package cache.simpledemo.impls.client;
 
 import cache.ILogable;
+import cache.center.ICenterCacheData;
 import cache.client.IClient;
 import cache.client.IClientCacheData;
 import cache.client.IPhysicalCache;
@@ -36,16 +37,15 @@ public class PhysicalClientCache implements IPhysicalCache, ILogable {
     }
 
     @Override
-    public IClientCacheData refreshFromRemote(String key) {
+    public void refreshFromRemote(String key) {
         IClientCacheData data = (IClientCacheData) virtualCenter.get(key);
         getLogger().info("Client {} refreshFromRemote key is {} and data is {}.", client.getName(),key,data);
         map.put(key,data);
-        return data;
     }
 
     @Override
-    public void setPrepareDirty(String key) {
-        map.get(key).setPrepareDirty();
+    public void setPrepareDirty(String key, boolean prepare) {
+        map.get(key).setPrepareDirty(prepare);
     }
 
     @Override
@@ -62,8 +62,19 @@ public class PhysicalClientCache implements IPhysicalCache, ILogable {
     }
 
     @Override
+    public void put(String compKey, IClientCacheData cacheData) {
+        map.put(compKey,cacheData);
+        virtualCenter.put(compKey, (ICenterCacheData) cacheData);
+    }
+
+    @Override
     public void setDirty(String key) {
         map.remove(key);
+    }
+
+    @Override
+    public boolean isDirty(String key) {
+        return map.get(key) == null;
     }
 
     @Override

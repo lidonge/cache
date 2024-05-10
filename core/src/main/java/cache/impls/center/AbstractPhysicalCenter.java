@@ -18,11 +18,6 @@ public abstract class AbstractPhysicalCenter implements IPhysicalCenter {
     }
 
     @Override
-    public void setDirty(String compKey) {
-        map.remove(compKey);
-    }
-
-    @Override
     public void setAgreeTimeout(int agreeTimeout) {
         this.agreeTimeout = agreeTimeout;
     }

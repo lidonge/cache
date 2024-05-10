@@ -30,7 +30,7 @@ public class DemoCacheData implements ICenterCacheData, IClientCacheData {
     }
 
     @Override
-    public void setPrepareDirty() {
-        prepareDirty = true;
+    public void setPrepareDirty(boolean prepare) {
+        prepareDirty = prepare;
     }
 }

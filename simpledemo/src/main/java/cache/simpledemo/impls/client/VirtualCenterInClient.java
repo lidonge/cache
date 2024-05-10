@@ -2,8 +2,8 @@ package cache.simpledemo.impls.client;
 
 import cache.IBaseClient;
 import cache.ICacheData;
+import cache.center.ICenterCacheData;
 import cache.client.IVirtualCenter;
-import cache.simpledemo.impls.source.VirtualCenterInSource;
 import cache.simpledemo.impls.source.VirtualClient;
 
 /**
@@ -35,6 +35,11 @@ public class VirtualCenterInClient implements IVirtualCenter {
     }
 
     @Override
+    public void put(String compKey, ICenterCacheData cacheData) {
+        virtualCenterInSource.put(compKey,cacheData);
+    }
+
+    @Override
     public boolean isAgreementReached(String compKey) {
         return virtualCenterInSource.isAgreementReached(compKey);
     }
@@ -45,7 +50,7 @@ public class VirtualCenterInClient implements IVirtualCenter {
     }
 
     @Override
-    public void unrigister(String name) {
-        virtualCenterInSource.unrigister(name);
+    public void unregisterClient(String name) {
+        virtualCenterInSource.unregisterClient(name);
     }
 }

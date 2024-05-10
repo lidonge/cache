@@ -17,27 +17,27 @@ public interface IPhysicalCenter {
      * Set specified data dirty.
      * @param compKey
      */
-    void setDirty(String compKey);
+    void setDirty(String compKey,  boolean dirty);
+
+    boolean isDirty(String compKey);
 
     /**
-     * Clear the flag of spacied agreement if dirty.
+     * Clear the flag of specified agreement if dirty.
      * @param compKey
      */
     void clearAgreementFlag(String compKey);
 
     /**
-     * Set the flag of spacied agreement if all client reached or timeout.
+     * Set the flag of specified agreement if all client reached or timeout.
      * @param compKey
      */
     void setAgreementFlag(String compKey);
 
     /**
-     * Make new data available in local cache of center.
-     *
+     * Get the flag of specified agreement.
      * @param compKey
-     * @return
      */
-    void makeNewDataAvailable(String compKey);
+    boolean isAgreementReached(String compKey);
 
     /**
      * Make sure if the policy is consistency or available.
@@ -88,4 +88,6 @@ public interface IPhysicalCenter {
      * @param asynListeners
      */
     void waitAllClientFinish(List<IAsynListener> asynListeners);
+
+    void putToLocalCache(String compKey, ICenterCacheData cacheData);
 }

@@ -3,7 +3,6 @@ package cache.client;
 import cache.IApplicationListener;
 import cache.IBaseClient;
 import cache.ILogable;
-import cache.center.IVirtualClient;
 
 /**
  * @author lidong@date 2023-10-24@version 1.0
@@ -15,7 +14,7 @@ public interface IClient extends IBaseClient, IApplicationListener, ILogable {
      * @param compKey
      */
     default void prepareDirty(String compKey){
-        getLogger().info("Client {} prepareDirty with key {}.",getName(),compKey);
+//        getLogger().info("Client {} prepareDirty with key {}.",getName(),compKey);
         getCache().setPrepareDirty(compKey);
     }
 
@@ -34,7 +33,7 @@ public interface IClient extends IBaseClient, IApplicationListener, ILogable {
         getLogger().info("Client {} on stopping, the key app flag is {}.", getName(),isKeyApp());
         if(isKeyApp()) {
             IVirtualCenter register = getClientRegister();
-            register.unrigister(getName());
+            register.unregisterClient(getName());
         }
     }
 

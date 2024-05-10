@@ -23,10 +23,29 @@ public interface ICache extends ILogable {
         IPhysicalCache pc = getPhysicalCache();
         String compKey = key.getCompositeKey();
 
-        IClientCacheData data = refresh(compKey);
+        ICacheData ret = null;
+        if(isPrepareDirty(compKey)){
+            dirtyIfAgreementReached(compKey);
+        }
+        refreshIfDirty(compKey);
+        IClientCacheData data = getPhysicalCache().get(compKey);
         getLogger().info("Client {} get {} value {} from client cache.", getClient().getName(),compKey,data);
 
         return data;
+    }
+
+    /**
+     * Should be called if the cache is empty.
+     * @param key
+     * @param cacheData
+     */
+    default void put(ICompositeKey key, IClientCacheData cacheData){
+        IPhysicalCache pc = getPhysicalCache();
+        String compKey = key.getCompositeKey();
+        Object locker = pc.getLocker(compKey);
+        synchronized (locker) {
+            pc.put(compKey,cacheData);
+        }
     }
 
     /**
@@ -41,7 +60,7 @@ public interface ICache extends ILogable {
      */
     default void setPrepareDirty(String key){
         getLogger().info("Client {} setPrepareDirty {} .", getClient().getName(),key);
-        getPhysicalCache().setPrepareDirty(key);
+        getPhysicalCache().setPrepareDirty(key, true);
     }
 
     /**
@@ -55,30 +74,21 @@ public interface ICache extends ILogable {
         return ret;
     }
 
-    private IClientCacheData refresh(String compKey){
-        ICacheData ret = null;
-        if(isPrepareDirty(compKey)){
-            refreshIfAgreementReached(compKey);
-        }
-        return refreshIfDirty(compKey);
-    }
-
-    private IClientCacheData refreshIfDirty(String compKey) {
+    private void refreshIfDirty(String compKey) {
         IPhysicalCache pc = getPhysicalCache();
         Object locker = pc.getLocker(compKey);
         synchronized (locker) {
-            IClientCacheData ret = pc.get(compKey);
-            boolean dirty = ret == null;
+            IClientCacheData ret = null;
+            boolean dirty = pc.isDirty(compKey);
             getLogger().info("Client {}'s {} refreshIfDirty is {}.", getClient().getName(),compKey,dirty);
             if (dirty) {
                 // null means dirty or first time read from cache
-                ret = pc.refreshFromRemote(compKey);
+                pc.refreshFromRemote(compKey);
             }
-            return ret;
         }
     }
 
-    private void refreshIfAgreementReached(String compKey) {
+    private void dirtyIfAgreementReached(String compKey) {
         IPhysicalCache pc = getPhysicalCache();
         Object locker = pc.getLocker(compKey);
         synchronized (locker) {
@@ -86,7 +96,7 @@ public interface ICache extends ILogable {
             getLogger().info("All agreed flag is {}, if true Refresh client {} .", isAllAgreed,getClient().getName());
 
             if (isAllAgreed) {
-//                pc.setPrepareDirty(compKey, false);
+                pc.setPrepareDirty(compKey, false);
                 pc.setDirty(compKey);
             }
         }

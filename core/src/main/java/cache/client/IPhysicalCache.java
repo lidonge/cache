@@ -17,14 +17,14 @@ public interface IPhysicalCache {
      * @param key
      * @return
      */
-    IClientCacheData refreshFromRemote(String key);
+    void refreshFromRemote(String key);
 
     /**
      * Set the prepare-dirty flag for the specified data.
      *
      * @param key
      */
-    void setPrepareDirty(String key);
+    void setPrepareDirty(String key, boolean prepare);
 
     /**
      * Test if current status is prepare-dirty of the specified data.
@@ -41,11 +41,23 @@ public interface IPhysicalCache {
     IClientCacheData get(String compKey);
 
     /**
+     * Put the new data to the local cache.
+     * @param compKey
+     * @param cacheData
+     */
+    void put(String compKey,IClientCacheData cacheData);
+
+    /**
      * Set specified local data to dirty, remove specified data from local.
-     * That clear the specified flag of prepare dirty.
      * @param key
      */
     void setDirty(String key);
+
+    /**
+     * Test if the specified local data is dirty.
+     * @param key
+     */
+    boolean isDirty(String key);
 
     /**
      * Get specified locker for atomic operations

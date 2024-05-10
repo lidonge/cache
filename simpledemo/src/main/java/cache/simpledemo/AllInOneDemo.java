@@ -3,6 +3,8 @@ package cache.simpledemo;
 
 import cache.ICompositeKey;
 import cache.ILogable;
+import cache.client.IClientCacheData;
+import cache.simpledemo.impls.DemoCacheData;
 import cache.simpledemo.impls.client.Client;
 import cache.simpledemo.impls.client.ClientCache;
 import cache.simpledemo.impls.client.PhysicalClientCache;
@@ -36,7 +38,7 @@ public class AllInOneDemo implements ILogable {
     private Worker<Source> srcWorker;
     public static void main(String[] args) {
         AllInOneDemo demo = new AllInOneDemo();
-//        demo.scenarioClientGet(demo.clients[0], demo.keys_1);
+//        demo.scenarioClientGet(demo.clientWorkers[0], demo.keys_1);
         demo.updateAndGet();
     }
 
@@ -86,7 +88,14 @@ public class AllInOneDemo implements ILogable {
     void scenarioClientGet(Worker<Client> worker, ICompositeKey keys){
         worker.setTask(() ->{
             Client client =worker.getTarget();
-            getLogger().info("{} scenarioClientGet value is {}.",client.getName(),client.getCache().get(keys));
+            IClientCacheData cacheData = client.getCache().get(keys);
+            getLogger().info("{} scenarioClientGet value is {}, new data put to cache.",client.getName(), cacheData);
+            if(cacheData == null){
+                cacheData = new DemoCacheData(keys.getCompositeKey());
+                client.getCache().put(keys,cacheData);
+                cacheData = client.getCache().get(keys);
+                getLogger().info("After put new data, {} scenarioClientGet value is {}, new data put to cache.",client.getName(), cacheData);
+            }
         });
 
     }
