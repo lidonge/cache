@@ -23,10 +23,11 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
     @Override
     default ICenterCacheData get(String compKey){
         IPhysicalCenter pc = getPhysicalCenter();
-        ICenterCacheData ret = null;
         Object locker = pc.getLocker(compKey);
         synchronized (locker) {
-            //TODO. Here need to consider the situation of newly registered clients， if the agreement is not reached
+            ICenterCacheData ret = null;
+            //Here need to consider the situation of newly registered clients， if the agreement is not reached
+            //So add all-agreement flag to the ICenterCacheData
             boolean dirty = pc.isDirty(compKey);
             if (!dirty ) {
                 //The data is dirty

@@ -17,24 +17,29 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class PhysicalCenter extends AbstractPhysicalCenter implements ILogable {
     private Map<String, ICenterCacheData> localCache = new HashMap<>();
-    private Map<String, Boolean> agreementFlags = new ConcurrentHashMap<>();
+//    private Map<String, Boolean> agreementFlags = new ConcurrentHashMap<>();
     private Map<String, Boolean> dirtyMap = new ConcurrentHashMap<>();
 
     private LockerByName locker = new LockerByName();
     @Override
     public void clearAgreementFlag(String compKey) {
-        agreementFlags.put(compKey, false);
+        localCache.get(compKey).setAllAgreementReached(false);
     }
 
     @Override
     public void setAgreementFlag(String compKey) {
-        agreementFlags.put(compKey, true);
+        ICenterCacheData data = localCache.get(compKey);
+        if(data != null)
+            data.setAllAgreementReached(true);
+        else{
+            //Uninitialized data is updated
+        }
     }
 
     @Override
     public boolean isAgreementReached(String compKey) {
-        Boolean b = agreementFlags.get(compKey);
-        return b == null || b;
+        ICenterCacheData cacheData = localCache.get(compKey);
+        return cacheData == null || cacheData.isAllAgreementReached();
     }
     @Override
     public void setDirty(String compKey, boolean dirty) {
@@ -46,11 +51,6 @@ public class PhysicalCenter extends AbstractPhysicalCenter implements ILogable {
         Boolean b = dirtyMap.get(compKey);
         return b == null || b;
     }
-
-//    @Override
-//    public void makeNewDataAvailable(String compKey) {
-//        localCache.put(compKey, new DemoCacheData(compKey));
-//    }
 
     @Override
     public boolean isConsistencyFirst() {

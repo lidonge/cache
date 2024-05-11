@@ -11,6 +11,9 @@ public class DemoCacheData implements ICenterCacheData, IClientCacheData {
     private String compKey;
     private String value;
     private boolean prepareDirty;
+
+    private boolean allAgreementReached = true;
+
     public DemoCacheData(String compKey) {
         this.compKey = compKey;
         value = "demo_" + sn++;
@@ -32,5 +35,15 @@ public class DemoCacheData implements ICenterCacheData, IClientCacheData {
     @Override
     public void setPrepareDirty(boolean prepare) {
         prepareDirty = prepare;
+    }
+
+    @Override
+    public boolean isAllAgreementReached() {
+        return allAgreementReached;
+    }
+
+    @Override
+    public void setAllAgreementReached(boolean allAgreementReached) {
+        this.allAgreementReached = allAgreementReached;
     }
 }
