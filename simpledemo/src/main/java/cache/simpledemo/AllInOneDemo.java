@@ -131,7 +131,7 @@ public class AllInOneDemo implements ILogable {
         VirtualCenterInClient virtualCenterInClient = new VirtualCenterInClient(ret);
         pcc.setVirtualCenter(virtualCenterInClient);
         virtualCenterInClient.setVirtualCenterInSource(source.getCenter());
-        virtualCenterInClient.registerClient(ret.getName(), ret);
+//        virtualCenterInClient.registerClient(ret.getName(), ret);
 
         cache.setClient(ret);
         pcc.setClient(ret);

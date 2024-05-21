@@ -36,8 +36,8 @@ public class VirtualCenterInSource implements IVirtualCenter, ILogable {
     }
 
     @Override
-    public void registerClient(String name, IBaseClient client) {
-        center.registerClient(name,client);
+    public boolean registerClient(String name, String key, IBaseClient client) {
+        return center.registerClient(name,key,client);
     }
 
     @Override

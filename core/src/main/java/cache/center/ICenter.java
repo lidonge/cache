@@ -30,7 +30,7 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
             //So add all-agreement flag to the ICenterCacheData
             boolean dirty = pc.isDirty(compKey);
             if (!dirty ) {
-                //The data is dirty
+                //The data is ready
                 ret = pc.getFromLocalCache(compKey);
             }
             getLogger().info("Get data {} from center, value is {}, dirty flag is {}." ,compKey,ret, dirty);
@@ -61,7 +61,7 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
         Object locker = pc.getLocker(compKey);
         boolean bNeedNotify = false;
         synchronized (locker) {
-            //This judgment is used to optimize the situation where the source is continuously updated.
+            //This is used to optimize the situation where the source is continuously updated.
             if(!pc.isDirty(compKey)) {
                 //clear agreement marker of the center
                 pc.clearAgreementFlag(compKey);
@@ -87,7 +87,8 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
         Object locker = pc.getLocker(compKey);
         synchronized (locker) {
             //clear cache
-            pc.putToLocalCache(compKey, null);
+            pc.setDirty(compKey,true);
+//            pc.putToLocalCache(compKey, null);
             //set agreement marker of the center
             pc.setAgreementFlag(compKey);
         }
@@ -111,9 +112,15 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
     }
 
     @Override
-    default void registerClient(String name, IBaseClient client){
+    default boolean registerClient(String name, String key, IBaseClient client){
         Map<String, IVirtualClient> clients = getPhysicalCenter().getClients();
-        clients.put(name, (IVirtualClient) client);
+        IVirtualClient  vc = clients.get(name);
+        if(vc == null){
+            vc = (IVirtualClient) client;
+            clients.put(name, vc);
+        }
+        vc.addKey(key);
+        return isAgreementReached(key);
     }
 
     @Override
@@ -126,11 +133,14 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
         Map<String, IVirtualClient> clients = getPhysicalCenter().getClients();
         List<IAsynListener> asynListeners = new ArrayList<>();
         for(IVirtualClient client:clients.values()){
-            getLogger().info("Prepare {}'s {} to dirty!",client.getName(), compKey);
-            asynListeners.add(client.prepareDirty(compKey));
+            if(client.hasKey(compKey)) {
+                getLogger().info("Prepare {}'s {} to dirty!",client.getName(), compKey);
+                asynListeners.add(client.prepareDirty(compKey));
+            }
         }
 
         getPhysicalCenter().waitAllClientFinish(asynListeners);
+        //TODO here should be call-back
         onAgreementReached(compKey);
     }
 

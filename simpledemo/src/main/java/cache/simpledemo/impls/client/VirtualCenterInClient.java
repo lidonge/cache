@@ -45,8 +45,8 @@ public class VirtualCenterInClient implements IVirtualCenter {
     }
 
     @Override
-    public void registerClient(String name, IBaseClient client) {
-        virtualCenterInSource.registerClient(name,new VirtualClient((Client) client));
+    public boolean registerClient(String name, String key, IBaseClient client) {
+        return virtualCenterInSource.registerClient(name,key, new VirtualClient((Client) client));
     }
 
     @Override

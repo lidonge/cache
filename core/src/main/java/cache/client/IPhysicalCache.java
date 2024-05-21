@@ -36,7 +36,7 @@ public interface IPhysicalCache {
     /**
      * Get specified data from local.
      * @param compKey
-     * @return null means local is dirty
+     * @return null means not registered.
      */
     IClientCacheData get(String compKey);
 

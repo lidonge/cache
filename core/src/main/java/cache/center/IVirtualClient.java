@@ -14,4 +14,17 @@ public interface IVirtualClient extends IBaseClient {
      * @return finish listener
      */
     IAsynListener prepareDirty(String compKey);
+
+    /**
+     * Add a new key to the client.
+     * @param key
+     */
+    void addKey(String key);
+
+    /**
+     * Test if the key is registered by the client.
+     * @param key
+     * @return
+     */
+    boolean hasKey(String key);
 }

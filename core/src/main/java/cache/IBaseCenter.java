@@ -18,7 +18,7 @@ public interface IBaseCenter {
      * Get cached data from this managing center.
      * if there is not existed, return null(If agreement is not reached, return old one).
      * @param compKey
-     * @return
+     * @return null if dirty.
      */
     ICacheData get(String compKey);
 
@@ -37,11 +37,12 @@ public interface IBaseCenter {
      */
     boolean isAgreementReached(String compKey);
     /**
-     * Registe a client.
+     * Register a client.
      * @param name client name
      * @param client
+     * @return true if is agreement reached for the key
      */
-    void registerClient(String name, IBaseClient client);
+    boolean registerClient(String name, String key, IBaseClient client);
 
     /**
      * Unregiste a client

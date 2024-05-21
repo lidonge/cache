@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="Changed from Center actively updating data to Client updating data">
+    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="consider the situation of newly registered clients， if the agreement is not reached. So add all-agreement flag to the ICenterCacheData">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/IBaseCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/IBaseCenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenterCacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenterCacheData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/IVirtualClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/IVirtualClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/ICache.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/ICache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/IClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IPhysicalCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/IPhysicalCache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/DemoCacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/DemoCacheData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/PhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/PhysicalCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +124,11 @@
       <workItem from="1700711907452" duration="388000" />
       <workItem from="1701229491039" duration="1248000" />
       <workItem from="1715132440745" duration="5706000" />
-      <workItem from="1715150929784" duration="35868000" />
+      <workItem from="1715150929784" duration="37932000" />
+      <workItem from="1715566207705" duration="345000" />
+      <workItem from="1715676923499" duration="2554000" />
+      <workItem from="1715781258687" duration="566000" />
+      <workItem from="1715822032016" duration="13118000" />
     </task>
     <task id="LOCAL-00001" summary="Finish core logic and interfaces">
       <option name="closed" value="true" />
@@ -162,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715311891638</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="consider the situation of newly registered clients， if the agreement is not reached. So add all-agreement flag to the ICenterCacheData">
+      <option name="closed" value="true" />
+      <created>1715417486672</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715417486672</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +200,7 @@
     <MESSAGE value="Move core code to core module,add simple demo module" />
     <MESSAGE value="change String[] keys to an interface ICompositeKey" />
     <MESSAGE value="Changed from Center actively updating data to Client updating data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed from Center actively updating data to Client updating data" />
+    <MESSAGE value="consider the situation of newly registered clients， if the agreement is not reached. So add all-agreement flag to the ICenterCacheData" />
+    <option name="LAST_COMMIT_MESSAGE" value="consider the situation of newly registered clients， if the agreement is not reached. So add all-agreement flag to the ICenterCacheData" />
   </component>
 </project>

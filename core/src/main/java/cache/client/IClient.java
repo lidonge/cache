@@ -20,12 +20,12 @@ public interface IClient extends IBaseClient, IApplicationListener, ILogable {
 
     @Override
     default void onInitializing(){
-        getLogger().info("Client {} on init, the key app flag is {}.", getName(),isKeyApp());
-        if(isKeyApp()) {
-            IVirtualCenter register = getClientRegister();
-            register.registerClient(getName(),this);
-            getLogger().info("Client {} register.", getName());
-        }
+//        getLogger().info("Client {} on init, the key app flag is {}.", getName(),isKeyApp());
+//        if(isKeyApp()) {
+//            IVirtualCenter register = getClientRegister();
+//            register.registerClient(getName(),this);
+//            getLogger().info("Client {} register.", getName());
+//        }
     }
 
     @Override
