@@ -65,4 +65,6 @@ public interface IPhysicalCache {
      * @return
      */
     Object getLocker(String compKey);
+
+    boolean isKeyInit(String compKey);
 }

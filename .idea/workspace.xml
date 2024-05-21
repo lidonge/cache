@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="consider the situation of newly registered clients， if the agreement is not reached. So add all-agreement flag to the ICenterCacheData">
+    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="If the client retrieves data and finds that the cached key is empty, it is considered as the first time it is used and needs to be registered with the center">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/IBaseCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/IBaseCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/IVirtualClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/IVirtualClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/ICache.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/ICache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/IClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IPhysicalCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/IPhysicalCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +121,7 @@
       <workItem from="1715566207705" duration="345000" />
       <workItem from="1715676923499" duration="2554000" />
       <workItem from="1715781258687" duration="566000" />
-      <workItem from="1715822032016" duration="13118000" />
+      <workItem from="1715822032016" duration="14218000" />
     </task>
     <task id="LOCAL-00001" summary="Finish core logic and interfaces">
       <option name="closed" value="true" />
@@ -178,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715417486672</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="If the client retrieves data and finds that the cached key is empty, it is considered as the first time it is used and needs to be registered with the center">
+      <option name="closed" value="true" />
+      <created>1716275106120</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716275106120</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +202,7 @@
     <MESSAGE value="change String[] keys to an interface ICompositeKey" />
     <MESSAGE value="Changed from Center actively updating data to Client updating data" />
     <MESSAGE value="consider the situation of newly registered clients， if the agreement is not reached. So add all-agreement flag to the ICenterCacheData" />
-    <option name="LAST_COMMIT_MESSAGE" value="consider the situation of newly registered clients， if the agreement is not reached. So add all-agreement flag to the ICenterCacheData" />
+    <MESSAGE value="If the client retrieves data and finds that the cached key is empty, it is considered as the first time it is used and needs to be registered with the center" />
+    <option name="LAST_COMMIT_MESSAGE" value="If the client retrieves data and finds that the cached key is empty, it is considered as the first time it is used and needs to be registered with the center" />
   </component>
 </project>
