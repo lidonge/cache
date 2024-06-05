@@ -4,18 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="If the client retrieves data and finds that the cached key is empty, it is considered as the first time it is used and needs to be registered with the center">
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/CallbackHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/IAsynCallbackable.java" afterDir="false" />
+    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="Improve the callback and timeout mechanism of asynchronous notification. Remaining issues: The timeout waiting mechanism is currently not supported">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/restkit/RESTKit_CommonSetting.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/docs/activities.drawio" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/simpledemo/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/simpledemo/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/simpledemo/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/simpledemo/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/simpledemo/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/simpledemo/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/IAsynListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/IAsynListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/IPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/IPhysicalCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/IVirtualClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/IVirtualClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/ICache.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/client/ICache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/impls/center/AbstractPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/impls/center/AbstractPhysicalCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/PhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/PhysicalCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +136,7 @@
       <workItem from="1715676923499" duration="2554000" />
       <workItem from="1715781258687" duration="566000" />
       <workItem from="1715822032016" duration="15517000" />
-      <workItem from="1717380352243" duration="16032000" />
+      <workItem from="1717380352243" duration="16694000" />
     </task>
     <task id="LOCAL-00001" summary="Finish core logic and interfaces">
       <option name="closed" value="true" />
@@ -195,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716278529077</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Improve the callback and timeout mechanism of asynchronous notification. Remaining issues: The timeout waiting mechanism is currently not supported">
+      <option name="closed" value="true" />
+      <created>1717573164559</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1717573164559</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +234,7 @@
     <MESSAGE value="Changed from Center actively updating data to Client updating data" />
     <MESSAGE value="consider the situation of newly registered clients， if the agreement is not reached. So add all-agreement flag to the ICenterCacheData" />
     <MESSAGE value="If the client retrieves data and finds that the cached key is empty, it is considered as the first time it is used and needs to be registered with the center" />
-    <option name="LAST_COMMIT_MESSAGE" value="If the client retrieves data and finds that the cached key is empty, it is considered as the first time it is used and needs to be registered with the center" />
+    <MESSAGE value="Improve the callback and timeout mechanism of asynchronous notification. Remaining issues: The timeout waiting mechanism is currently not supported" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve the callback and timeout mechanism of asynchronous notification. Remaining issues: The timeout waiting mechanism is currently not supported" />
   </component>
 </project>

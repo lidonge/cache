@@ -97,6 +97,7 @@ public interface ICenter extends IBaseCenter, ILogable {
             clients.put(name, vc);
         }
         vc.addKey(key);
+        //TODO here need register key to source?
         return isAgreementReached(key);
     }
 
