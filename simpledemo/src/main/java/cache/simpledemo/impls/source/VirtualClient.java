@@ -25,10 +25,9 @@ public class VirtualClient implements IVirtualClient {
     }
 
     @Override
-    public IAsynListener prepareDirty(String compKey) {
+    public void prepareDirty(String compKey, IAsynListener listener) {
         client.prepareDirty(compKey);
-        return new IAsynListener() {
-        };
+        listener.onSuccess();
     }
 
     @Override

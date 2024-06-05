@@ -83,11 +83,8 @@ public interface IPhysicalCenter {
      */
     Object getLocker(String compKey);
 
-    /**
-     * Wait all client communication finish or timeout.
-     * @param asynListeners
-     */
-    void waitAllClientFinish(List<IAsynListener> asynListeners);
-
     void putToLocalCache(String compKey, ICenterCacheData cacheData);
+
+    boolean isOnChanging();
+    void setOnChanging(boolean onChanging);
 }

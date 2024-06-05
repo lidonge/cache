@@ -28,7 +28,7 @@ public interface ICache extends ILogable {
         Object locker = pc.getLocker(compKey);
         IClientCacheData data = null;
         synchronized (locker) {
-            if (pc.isKeyInit(compKey)) {
+            if (!pc.isKeyInit(compKey)) {
                 //It's the first time to get data, register the key to the center
                 IClient client = getClient();
                 IVirtualCenter virtualCenter = client.getClientRegister();

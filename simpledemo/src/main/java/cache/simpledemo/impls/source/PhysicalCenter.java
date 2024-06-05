@@ -77,11 +77,6 @@ public class PhysicalCenter extends AbstractPhysicalCenter implements ILogable {
     }
 
     @Override
-    public void waitAllClientFinish(List<IAsynListener> asynListeners) {
-        //TODO
-    }
-
-    @Override
     public void putToLocalCache(String compKey, ICenterCacheData cacheData) {
         localCache.put(compKey,cacheData);
     }

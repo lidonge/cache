@@ -11,6 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public abstract class AbstractPhysicalCenter implements IPhysicalCenter {
     protected int agreeTimeout = 100;
+    private boolean isOnChanging = false;
     private Map<String, IVirtualClient> map = new ConcurrentHashMap<>();
 
     public Map<String, IVirtualClient> getClients() {
@@ -26,4 +27,15 @@ public abstract class AbstractPhysicalCenter implements IPhysicalCenter {
     public int getAgreeTimeout() {
         return agreeTimeout;
     }
+
+    @Override
+    public boolean isOnChanging() {
+        return isOnChanging;
+    }
+
+    @Override
+    public void setOnChanging(boolean onChanging) {
+        isOnChanging = onChanging;
+    }
+
 }

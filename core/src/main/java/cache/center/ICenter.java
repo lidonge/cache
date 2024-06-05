@@ -13,7 +13,7 @@ import java.util.Map;
  * @author lidong@date 2023-10-24@version 1.0
  * The local or remote center should implement this interface to manage cache.
  */
-public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
+public interface ICenter extends IBaseCenter, ILogable {
     /**
      * Return the physical implement of this center. There may be several physical implements,
      * e.g. local center, remote center.
@@ -59,23 +59,16 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
     default void onCacheChanged(String compKey){
         IPhysicalCenter pc = getPhysicalCenter();
         Object locker = pc.getLocker(compKey);
-        boolean bNeedNotify = false;
         synchronized (locker) {
             //This is used to optimize the situation where the source is continuously updated.
-            if(!pc.isDirty(compKey)) {
+            if(!pc.isDirty(compKey) && !pc.isOnChanging()) {
+                pc.setOnChanging(true);
                 //clear agreement marker of the center
                 pc.clearAgreementFlag(compKey);
 //                pc.setDirty(compKey, true);
-                bNeedNotify = true;
+                notifyAllPrepareDirty(compKey);
             }
         }
-        //start agreement timeout monitor
-//        TimeoutUtil.getInstance().addMonitor(this,compKey,pc.getAgreeTimeout());
-       if(bNeedNotify) {
-           //notify all client to prepare dirty
-           notifyAllPrepareDirty(compKey);
-       }
-
     }
 
     /**
@@ -91,23 +84,7 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
 //            pc.putToLocalCache(compKey, null);
             //set agreement marker of the center
             pc.setAgreementFlag(compKey);
-        }
-    }
-
-    /**
-     * Called when an agreement is not reached before timeout.
-     * @param compKey
-     */
-    @Override
-    default void onTimeout(String compKey){
-        IPhysicalCenter pc = getPhysicalCenter();
-        boolean isConsistencyFirst = pc.isConsistencyFirst();
-        if(isConsistencyFirst){
-            if(!pc.keepWaitAgreement(compKey)){
-                forceAgree(compKey,pc);
-            }
-        }else {
-            forceAgree(compKey, pc);
+            pc.setOnChanging(false);
         }
     }
 
@@ -130,22 +107,21 @@ public interface ICenter extends IBaseCenter, ITimeoutListener, ILogable {
     }
 
     private void notifyAllPrepareDirty(String compKey){
-        Map<String, IVirtualClient> clients = getPhysicalCenter().getClients();
-        List<IAsynListener> asynListeners = new ArrayList<>();
+        IPhysicalCenter pc = getPhysicalCenter();
+        Map<String, IVirtualClient> clients = pc.getClients();
+        CallbackHandler callbackHandler = new CallbackHandler(compKey, new IAsynCallbackable() {
+            @Override
+            public void allFinished(String compKey) {
+                onAgreementReached(compKey);
+                //TODO The timeout waiting mechanism is currently not supported
+            }
+        });
         for(IVirtualClient client:clients.values()){
             if(client.hasKey(compKey)) {
                 getLogger().info("Prepare {}'s {} to dirty!",client.getName(), compKey);
-                asynListeners.add(client.prepareDirty(compKey));
+                client.prepareDirty(compKey,callbackHandler.addOne());
             }
         }
-
-        getPhysicalCenter().waitAllClientFinish(asynListeners);
-        //TODO here should be call-back
-        onAgreementReached(compKey);
-    }
-
-    private void forceAgree(String compKey, IPhysicalCenter pc) {
-        onAgreementReached(compKey);
-        pc.logAgreementTimeout(compKey);
+        callbackHandler.start(pc.getAgreeTimeout());
     }
 }
