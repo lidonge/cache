@@ -4,6 +4,7 @@ import cache.IBaseClient;
 import cache.ICacheData;
 import cache.ILogable;
 import cache.center.ICenterCacheData;
+import cache.client.IClientCacheData;
 import cache.client.IVirtualCenter;
 
 /**
@@ -43,5 +44,10 @@ public class VirtualCenterInSource implements IVirtualCenter, ILogable {
     @Override
     public void unregisterClient(String name) {
         center.unregisterClient(name);
+    }
+
+    @Override
+    public void putToCenter(String compKey, IClientCacheData cacheData) {
+        throw new RuntimeException("Should not be called in center.");
     }
 }

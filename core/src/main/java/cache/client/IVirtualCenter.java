@@ -8,4 +8,11 @@ import cache.center.ICenterCacheData;
  * A cache managing center, may be a stand-alone aplication, or implemented by each source side.
  */
 public interface IVirtualCenter extends IBaseCenter {
+    /**
+     * Put the new data to the local cache if the status is in dirty.
+     * And set the dirty status to false.
+     * @param compKey
+     * @param cacheData
+     */
+    void putToCenter(String compKey, IClientCacheData cacheData);
 }

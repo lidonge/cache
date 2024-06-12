@@ -1,5 +1,6 @@
 package cache.source;
 
+import cache.IBaseCenter;
 import cache.ICompositeKey;
 import cache.client.IVirtualCenter;
 
@@ -16,6 +17,10 @@ public interface ISource extends IContentChangedListener {
         center.onCacheChanged(compKey);
     }
 
+    //TODO Optimized
+    default void registerKey(){
+
+    }
     /**
      * Get the  local/remote cache managing center.
      * @return

@@ -3,6 +3,7 @@ package cache.simpledemo.impls.client;
 import cache.IBaseClient;
 import cache.ICacheData;
 import cache.center.ICenterCacheData;
+import cache.client.IClientCacheData;
 import cache.client.IVirtualCenter;
 import cache.simpledemo.impls.source.VirtualClient;
 
@@ -52,5 +53,10 @@ public class VirtualCenterInClient implements IVirtualCenter {
     @Override
     public void unregisterClient(String name) {
         virtualCenterInSource.unregisterClient(name);
+    }
+
+    @Override
+    public void putToCenter(String compKey, IClientCacheData cacheData) {
+        this.put(compKey, (ICenterCacheData) cacheData);
     }
 }

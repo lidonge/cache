@@ -3,6 +3,7 @@ package cache.client;
 import cache.ICacheData;
 import cache.ICompositeKey;
 import cache.ILogable;
+import cache.center.ICenterCacheData;
 
 /**
  * @author lidong@date 2023-10-24@version 1.0
@@ -22,7 +23,7 @@ public interface ICache extends ILogable {
      * @param key
      * @return
      */
-    default IClientCacheData get(ICompositeKey key) {
+    default IClientCacheData get(ICompositeKey key, IBusinessService service) {
         IPhysicalCache pc = getPhysicalCache();
         String compKey = key.getCompositeKey();
         Object locker = pc.getLocker(compKey);
@@ -42,6 +43,11 @@ public interface ICache extends ILogable {
             }
             refreshIfDirty(compKey);
             data = pc.get(compKey);
+            if(data  == null){
+                data = service.getData(key);
+                put(compKey, data);
+                getLogger().info("After put new data, {} value is {}, new data put to cache.",getClient().getName(), data);
+            }
         }
         getLogger().info("Client {} get {} value {} from client cache.", getClient().getName(), compKey, data);
 
@@ -51,16 +57,13 @@ public interface ICache extends ILogable {
     /**
      * Should be called if the cache is empty.
      *
-     * @param key
+     * @param compKey
      * @param cacheData
      */
-    default void put(ICompositeKey key, IClientCacheData cacheData) {
+    private void put(String compKey, IClientCacheData cacheData) {
         IPhysicalCache pc = getPhysicalCache();
-        String compKey = key.getCompositeKey();
-        Object locker = pc.getLocker(compKey);
-        synchronized (locker) {
-            pc.put(compKey, cacheData);
-        }
+        pc.put(compKey, cacheData);
+        getClient().getClientRegister().putToCenter(compKey, cacheData);
     }
 
     /**
