@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="Modify the client mechanism and make sure not to register the source first" />
+    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="modify structure">
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/IMultiCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/IPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/cache/center/IPhysicalCenter.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +61,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="cache.center" />
       <recent name="cache.client" />
       <recent name="cache.simpledemo.impls" />
       <recent name="cache.impls.util" />
@@ -130,7 +136,7 @@
       <workItem from="1718092181443" duration="165000" />
       <workItem from="1718092352035" duration="82000" />
       <workItem from="1718092456996" duration="1516000" />
-      <workItem from="1718107362521" duration="17440000" />
+      <workItem from="1718107362521" duration="19461000" />
     </task>
     <task id="LOCAL-00001" summary="Finish core logic and interfaces">
       <option name="closed" value="true" />
@@ -228,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718270418786</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="modify structure">
+      <option name="closed" value="true" />
+      <created>1718271019723</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1718271019723</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +268,7 @@
     <MESSAGE value="If the client retrieves data and finds that the cached key is empty, it is considered as the first time it is used and needs to be registered with the center" />
     <MESSAGE value="Improve the callback and timeout mechanism of asynchronous notification. Remaining issues: The timeout waiting mechanism is currently not supported" />
     <MESSAGE value="Modify the client mechanism and make sure not to register the source first" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modify the client mechanism and make sure not to register the source first" />
+    <MESSAGE value="modify structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify structure" />
   </component>
 </project>

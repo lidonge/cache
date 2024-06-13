@@ -122,6 +122,10 @@ public interface ICenter extends IBaseCenter, ILogable {
                 client.prepareDirty(compKey,callbackHandler.addOne());
             }
         }
+        IMultiCenter multiCenter = pc.getMultiCenter();
+        if(multiCenter != null){
+            multiCenter.prepareDirty(compKey,callbackHandler.addOne());
+        }
         callbackHandler.start(pc.getAgreeTimeout());
     }
 }

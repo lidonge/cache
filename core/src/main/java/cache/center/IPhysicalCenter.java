@@ -86,4 +86,6 @@ public interface IPhysicalCenter {
 
     boolean isOnChanging();
     void setOnChanging(boolean onChanging);
+
+    IMultiCenter getMultiCenter();
 }
