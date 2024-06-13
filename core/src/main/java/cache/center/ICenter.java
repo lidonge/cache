@@ -3,10 +3,7 @@ package cache.center;
 import cache.IBaseCenter;
 import cache.IBaseClient;
 import cache.ILogable;
-import cache.impls.util.ITimeoutListener;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,6 +17,7 @@ public interface ICenter extends IBaseCenter, ILogable {
      * @return
      */
     IPhysicalCenter getPhysicalCenter();
+
     @Override
     default ICenterCacheData get(String compKey){
         IPhysicalCenter pc = getPhysicalCenter();
@@ -34,6 +32,7 @@ public interface ICenter extends IBaseCenter, ILogable {
                 ret = pc.getFromLocalCache(compKey);
             }
             getLogger().info("Get data {} from center, value is {}, dirty flag is {}." ,compKey,ret, dirty);
+            //TODO Concurrency for a specific key may cause efficiency problems, but this is very rare.
             return ret;
         }
     }

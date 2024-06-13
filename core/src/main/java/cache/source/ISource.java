@@ -1,6 +1,5 @@
 package cache.source;
 
-import cache.IBaseCenter;
 import cache.ICompositeKey;
 import cache.client.IVirtualCenter;
 

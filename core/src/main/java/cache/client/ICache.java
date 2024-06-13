@@ -1,9 +1,7 @@
 package cache.client;
 
-import cache.ICacheData;
 import cache.ICompositeKey;
 import cache.ILogable;
-import cache.center.ICenterCacheData;
 
 /**
  * @author lidong@date 2023-10-24@version 1.0
@@ -23,7 +21,7 @@ public interface ICache extends ILogable {
      * @param key
      * @return
      */
-    default IClientCacheData get(ICompositeKey key, IBusinessService service) {
+    default IClientCacheData getAndPutIfDirty(ICompositeKey key, IBusinessService service) {
         IPhysicalCache pc = getPhysicalCache();
         String compKey = key.getCompositeKey();
         Object locker = pc.getLocker(compKey);
@@ -44,8 +42,9 @@ public interface ICache extends ILogable {
             refreshIfDirty(compKey);
             data = pc.get(compKey);
             if(data  == null){
+                //TODO Concurrency for a specific key may cause efficiency problems, but this is very rare.
                 data = service.getData(key);
-                put(compKey, data);
+                putToLocalAndCenter(compKey, data);
                 getLogger().info("After put new data, {} value is {}, new data put to cache.",getClient().getName(), data);
             }
         }
@@ -60,7 +59,7 @@ public interface ICache extends ILogable {
      * @param compKey
      * @param cacheData
      */
-    private void put(String compKey, IClientCacheData cacheData) {
+    private void putToLocalAndCenter(String compKey, IClientCacheData cacheData) {
         IPhysicalCache pc = getPhysicalCache();
         pc.put(compKey, cacheData);
         getClient().getClientRegister().putToCenter(compKey, cacheData);

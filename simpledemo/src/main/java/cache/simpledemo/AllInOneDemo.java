@@ -3,7 +3,6 @@ package cache.simpledemo;
 
 import cache.ICompositeKey;
 import cache.ILogable;
-import cache.center.ICenterCacheData;
 import cache.client.IBusinessService;
 import cache.client.IClientCacheData;
 import cache.simpledemo.impls.DemoCacheData;
@@ -90,7 +89,7 @@ public class AllInOneDemo implements ILogable {
     void scenarioClientGet(Worker<Client> worker, ICompositeKey keys){
         worker.setTask(() ->{
             Client client =worker.getTarget();
-            IClientCacheData cacheData = client.getCache().get(keys, new IBusinessService() {
+            IClientCacheData cacheData = client.getCache().getAndPutIfDirty(keys, new IBusinessService() {
                 @Override
                 public IClientCacheData getData(ICompositeKey key) {
                     return new DemoCacheData(keys.getCompositeKey());
