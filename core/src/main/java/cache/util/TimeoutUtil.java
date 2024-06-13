@@ -1,4 +1,4 @@
-package cache.impls.util;
+package cache.util;
 
 import java.util.Timer;
 import java.util.TimerTask;

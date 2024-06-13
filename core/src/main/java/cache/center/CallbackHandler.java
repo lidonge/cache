@@ -1,7 +1,7 @@
 package cache.center;
 
-import cache.impls.util.ITimeoutListener;
-import cache.impls.util.TimeoutUtil;
+import cache.util.ITimeoutListener;
+import cache.util.TimeoutUtil;
 
 import java.util.ArrayList;
 import java.util.List;

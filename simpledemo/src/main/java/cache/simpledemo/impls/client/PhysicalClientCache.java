@@ -5,7 +5,7 @@ import cache.center.ICenterCacheData;
 import cache.client.IClient;
 import cache.client.IClientCacheData;
 import cache.client.IPhysicalCache;
-import cache.impls.util.LockerByName;
+import cache.util.LockerByName;
 
 import java.util.HashMap;
 import java.util.Map;

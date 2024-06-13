@@ -1,4 +1,4 @@
-package cache.impls.util;
+package cache.util;
 
 /**
  * @author lidong@date 2023-10-25@version 1.0
