@@ -3,9 +3,9 @@ package cache.simpledemo.impls.source;
 import cache.IBaseClient;
 import cache.ICacheData;
 import cache.ILogable;
-import cache.center.ICenterCacheData;
-import cache.client.IClientCacheData;
-import cache.client.IVirtualCenter;
+import cache.ICenterCacheData;
+import cache.IClientCacheData;
+import cache.IVirtualCenter;
 
 /**
  * @author lidong@date 2023-10-25@version 1.0

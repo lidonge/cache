@@ -4,7 +4,7 @@ package cache.simpledemo;
 import cache.ICompositeKey;
 import cache.ILogable;
 import cache.client.IBusinessService;
-import cache.client.IClientCacheData;
+import cache.IClientCacheData;
 import cache.simpledemo.impls.DemoCacheData;
 import cache.simpledemo.impls.client.Client;
 import cache.simpledemo.impls.client.ClientCache;

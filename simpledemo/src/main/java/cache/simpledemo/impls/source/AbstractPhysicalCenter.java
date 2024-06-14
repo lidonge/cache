@@ -1,6 +1,6 @@
 package cache.simpledemo.impls.source;
 
-import cache.center.IVirtualClient;
+import cache.IVirtualClient;
 import cache.center.IPhysicalCenter;
 
 import java.util.Map;

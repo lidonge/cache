@@ -1,6 +1,6 @@
 package cache.simpledemo.impls.source;
 
-import cache.client.IVirtualCenter;
+import cache.IVirtualCenter;
 import cache.source.ISource;
 
 /**

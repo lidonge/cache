@@ -1,7 +1,7 @@
 package cache.simpledemo.impls;
 
-import cache.center.ICenterCacheData;
-import cache.client.IClientCacheData;
+import cache.ICenterCacheData;
+import cache.IClientCacheData;
 
 /**
  * @author lidong@date 2023-10-25@version 1.0

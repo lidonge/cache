@@ -2,9 +2,9 @@ package cache.simpledemo.impls.client;
 
 import cache.IBaseClient;
 import cache.ICacheData;
-import cache.center.ICenterCacheData;
-import cache.client.IClientCacheData;
-import cache.client.IVirtualCenter;
+import cache.ICenterCacheData;
+import cache.IClientCacheData;
+import cache.IVirtualCenter;
 import cache.simpledemo.impls.source.VirtualClient;
 
 /**

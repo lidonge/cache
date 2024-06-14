@@ -1,9 +1,9 @@
 package cache.simpledemo.impls.client;
 
 import cache.ILogable;
-import cache.center.ICenterCacheData;
+import cache.ICenterCacheData;
 import cache.client.IClient;
-import cache.client.IClientCacheData;
+import cache.IClientCacheData;
 import cache.client.IPhysicalCache;
 import cache.util.LockerByName;
 

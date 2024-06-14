@@ -1,7 +1,8 @@
 package cache.simpledemo.impls.source;
 
 import cache.ILogable;
-import cache.center.ICenterCacheData;
+import cache.ICenterCacheData;
+import cache.center.IMultiCenter;
 import cache.util.LockerByName;
 
 import java.util.HashMap;
@@ -75,5 +76,10 @@ public class PhysicalCenter extends AbstractPhysicalCenter implements ILogable {
     @Override
     public void putToLocalCache(String compKey, ICenterCacheData cacheData) {
         localCache.put(compKey,cacheData);
+    }
+
+    @Override
+    public IMultiCenter getMultiCenter() {
+        return null;
     }
 }

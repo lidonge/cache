@@ -1,7 +1,7 @@
 package cache.simpledemo.impls.source;
 
-import cache.center.IAsynListener;
-import cache.center.IVirtualClient;
+import cache.IAsynListener;
+import cache.IVirtualClient;
 import cache.simpledemo.impls.client.Client;
 
 import java.util.HashMap;

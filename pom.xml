@@ -10,7 +10,11 @@
     <packaging>pom</packaging>
     <modules>
         <module>simpledemo</module>
-        <module>core</module>
+        <module>base</module>
+        <module>api</module>
+        <module>center</module>
+        <module>client</module>
+        <module>source</module>
     </modules>
 
     <properties>
