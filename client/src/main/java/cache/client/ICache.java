@@ -2,7 +2,7 @@ package cache.client;
 
 import cache.IClientCacheData;
 import cache.ICompositeKey;
-import cache.ILogable;
+import cache.util.ILogable;
 import cache.IVirtualCenter;
 
 /**
@@ -23,7 +23,7 @@ public interface ICache extends ILogable {
      * @param key
      * @return
      */
-    default IClientCacheData getAndPutIfDirty(ICompositeKey key, IBusinessService service) {
+    default IClientCacheData getAndPutIfDirty(ICompositeKey key, IBusinessService service) throws ServiceCallException{
         IPhysicalCache pc = getPhysicalCache();
         String compKey = key.getCompositeKey();
         Object locker = pc.getLocker(compKey);

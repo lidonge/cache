@@ -2,7 +2,7 @@ package cache.client;
 
 import cache.IApplicationListener;
 import cache.IBaseClient;
-import cache.ILogable;
+import cache.util.ILogable;
 import cache.IVirtualCenter;
 
 /**

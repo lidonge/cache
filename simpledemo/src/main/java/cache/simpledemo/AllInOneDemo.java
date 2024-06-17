@@ -2,9 +2,10 @@ package cache.simpledemo;
 
 
 import cache.ICompositeKey;
-import cache.ILogable;
+import cache.util.ILogable;
 import cache.client.IBusinessService;
 import cache.IClientCacheData;
+import cache.client.ServiceCallException;
 import cache.simpledemo.impls.DemoCacheData;
 import cache.simpledemo.impls.client.Client;
 import cache.simpledemo.impls.client.ClientCache;
@@ -160,7 +161,11 @@ class Worker<T> implements Runnable{
                 }
             }
             if(task != null) {
-                task.exec();
+                try {
+                    task.exec();
+                } catch (ServiceCallException e) {
+                    throw new RuntimeException(e);
+                }
                 task = null;
             }
         }
@@ -181,5 +186,5 @@ class Worker<T> implements Runnable{
 
 @FunctionalInterface
 interface ITask{
-    void exec();
+    void exec() throws ServiceCallException;
 }

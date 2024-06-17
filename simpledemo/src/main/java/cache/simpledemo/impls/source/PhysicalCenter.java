@@ -1,8 +1,10 @@
 package cache.simpledemo.impls.source;
 
-import cache.ILogable;
+import cache.util.ILogable;
 import cache.ICenterCacheData;
-import cache.center.IMultiCenter;
+import cache.IPrepareDirtyHandler;
+import cache.util.IRetryHandler;
+import cache.util.IRetryTool;
 import cache.util.LockerByName;
 
 import java.util.HashMap;
@@ -79,7 +81,17 @@ public class PhysicalCenter extends AbstractPhysicalCenter implements ILogable {
     }
 
     @Override
-    public IMultiCenter getMultiCenter() {
+    public IPrepareDirtyHandler getMultiCenter() {
         return null;
+    }
+
+    @Override
+    public IRetryTool getRetryTool() {
+        return new IRetryTool() {
+            @Override
+            public void retry(IRetryHandler handler) {
+                handler.exec();
+            }
+        };
     }
 }

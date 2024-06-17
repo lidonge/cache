@@ -1,7 +1,9 @@
 package cache.center;
 
 import cache.ICenterCacheData;
+import cache.IPrepareDirtyHandler;
 import cache.IVirtualClient;
+import cache.util.IRetryTool;
 
 import java.util.Map;
 
@@ -90,5 +92,7 @@ public interface IPhysicalCenter {
     boolean isOnChanging();
     void setOnChanging(boolean onChanging);
 
-    IMultiCenter getMultiCenter();
+    IPrepareDirtyHandler getMultiCenter();
+
+    IRetryTool getRetryTool();
 }

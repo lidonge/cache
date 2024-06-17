@@ -5,59 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="Add multiple centers support">
-      <change afterPath="$PROJECT_DIR$/base/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/center/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/base/src/main/java/cache/util/IRetryHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/base/src/main/java/cache/util/IRetryTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/ServiceCallException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/docs/activities.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/docs/activities.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/IApplicationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IApplicationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/IBaseCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IBaseCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/IBaseClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IBaseClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/ICacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/ICacheData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/ICompositeKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/ICompositeKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/ILogable.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/ILogable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/CallbackHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/CallbackHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/IAsynCallbackable.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/IAsynCallbackable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/IAsynListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IAsynListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/ICenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/ICenterCacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/ICenterCacheData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/IMultiCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/IMultiCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/IPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/IPhysicalCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/center/IVirtualClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IVirtualClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/IBusinessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/ICache.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/ICache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/IClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IClientCacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IClientCacheData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IPhysicalCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/IPhysicalCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/client/IVirtualCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IVirtualCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/source/IContentChangedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/src/main/java/cache/source/IContentChangedListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/source/ISource.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/src/main/java/cache/source/ISource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/util/ITimeoutListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/base/src/main/java/cache/util/ITimeoutListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/util/LockerByName.java" beforeDir="false" afterPath="$PROJECT_DIR$/base/src/main/java/cache/util/LockerByName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/cache/util/TimeoutUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/base/src/main/java/cache/util/TimeoutUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/resources/logback.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/cache/ILogable.java" beforeDir="false" afterPath="$PROJECT_DIR$/base/src/main/java/cache/util/ILogable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/cache/IVirtualClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IVirtualClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/CallbackHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/CallbackHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/ICenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/ICenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/IMultiCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IPrepareDirtyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/IPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/IPhysicalCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/IBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/IBusinessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/ICache.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/ICache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/IClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/IClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/DemoCacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/DemoCacheData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/AbstractPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/AbstractPhysicalCenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/PhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/PhysicalCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/Source.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/Source.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +63,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "refactor",
+    "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "19",
     "last_opened_file_path": "/Users/lidong/gitspace/cache",
     "node.js.detected.package.eslint": "true",
@@ -110,16 +74,17 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.51207244",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="cache.util" />
       <recent name="cache.center" />
       <recent name="cache.client" />
       <recent name="cache.simpledemo.impls" />
       <recent name="cache.impls.util" />
-      <recent name="cache" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/docs" />

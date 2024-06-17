@@ -1,19 +1,10 @@
 package cache;
 
-import cache.IBaseClient;
-
 /**
  * @author lidong@date 2023-10-24@version 1.0
  * A client side of cacher
  */
-public interface IVirtualClient extends IBaseClient {
-    /**
-     * Called asynchronized if a specified data is preparing dirty.
-     * @param compKey
-     * @return finish listener
-     */
-    void prepareDirty(String compKey,IAsynListener listener);
-
+public interface IVirtualClient extends IBaseClient, IPrepareDirtyHandler {
     /**
      * Add a new key to the client.
      * @param key

@@ -17,9 +17,32 @@ public class CallbackHandler implements ITimeoutListener {
     private int finishCount = 0;
     private List<IAsynListener> listeners = new ArrayList<>();
 
-    public CallbackHandler(String compKey, IAsynCallbackable callbackable) {
+    public CallbackHandler(String compKey) {
         this.compKey = compKey;
+    }
+
+    public void setCallbackable(IAsynCallbackable callbackable) {
         this.callbackable = callbackable;
+    }
+
+    public String getCompKey() {
+        return compKey;
+    }
+
+    public IAsynCallbackable getCallbackable() {
+        return callbackable;
+    }
+
+    public int getCallingCount() {
+        return callingCount;
+    }
+
+    public int getFinishCount() {
+        return finishCount;
+    }
+
+    public List<IAsynListener> getListeners() {
+        return listeners;
     }
 
     public void start(int timeout){

@@ -1,6 +1,6 @@
 package cache.simpledemo.impls.client;
 
-import cache.ILogable;
+import cache.util.ILogable;
 import cache.ICenterCacheData;
 import cache.client.IClient;
 import cache.IClientCacheData;

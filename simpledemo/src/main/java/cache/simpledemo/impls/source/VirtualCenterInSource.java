@@ -2,7 +2,7 @@ package cache.simpledemo.impls.source;
 
 import cache.IBaseClient;
 import cache.ICacheData;
-import cache.ILogable;
+import cache.util.ILogable;
 import cache.ICenterCacheData;
 import cache.IClientCacheData;
 import cache.IVirtualCenter;

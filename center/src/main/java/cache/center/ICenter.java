@@ -1,7 +1,10 @@
 package cache.center;
 
 import cache.*;
+import cache.util.ILogable;
+import cache.util.IRetryHandler;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -104,26 +107,87 @@ public interface ICenter extends IBaseCenter, ILogable {
         clients.remove(name);
     }
 
+    class CallbackStatus {
+        boolean hasTimeout = false;
+        boolean finished = false;
+    };
     private void notifyAllPrepareDirty(String compKey){
         IPhysicalCenter pc = getPhysicalCenter();
         Map<String, IVirtualClient> clients = pc.getClients();
-        CallbackHandler callbackHandler = new CallbackHandler(compKey, new IAsynCallbackable() {
-            @Override
-            public void allFinished(String compKey) {
+        CallbackHandler callbackHandler = new CallbackHandler(compKey);
+        Map<IPrepareDirtyHandler, IAsynListener> allClients = getPrepareDirtyHandlers(compKey, callbackHandler, clients, pc.getMultiCenter());
+        CallbackStatus status = new CallbackStatus();
+        createAsynCallbackable(callbackHandler, status, pc, allClients);
+
+        pc.getRetryTool().retry(() -> sendToClientsSync(compKey, allClients, pc, callbackHandler, status));
+    }
+
+    private void createAsynCallbackable(CallbackHandler callbackHandler, CallbackStatus status, IPhysicalCenter pc, Map<IPrepareDirtyHandler, IAsynListener> allClients) {
+        callbackHandler.setCallbackable(compKey -> {
+            status.finished = true;
+            if(pc.isConsistencyFirst()){
+                for(IPrepareDirtyHandler key: allClients.keySet()){
+                    IAsynListener listener = allClients.get(key);
+                    switch (listener.getStatus()){
+                        case timeout :
+                            status.hasTimeout = true;
+                            break;
+                        case error:
+                            allClients.remove(key);
+                            if(key instanceof IVirtualClient)
+                                unregisterClient(((IVirtualClient) key).getName());
+                            break;
+                        case success:
+                            allClients.remove(key);
+                            break;
+                    }
+                }
+            }else
                 onAgreementReached(compKey);
-                //TODO The timeout waiting mechanism is currently not supported
-            }
+
+            status.notify();
         });
-        for(IVirtualClient client:clients.values()){
-            if(client.hasKey(compKey)) {
-                getLogger().info("Prepare {}'s {} to dirty!",client.getName(), compKey);
-                client.prepareDirty(compKey,callbackHandler.addOne());
+    }
+
+    private void sendToClientsSync(String compKey, Map<IPrepareDirtyHandler, IAsynListener> allClients, IPhysicalCenter pc, CallbackHandler callbackHandler, CallbackStatus status) {
+        prepareDirty(compKey, allClients, pc);
+        callbackHandler.start(pc.getAgreeTimeout());
+        while(!status.finished){
+            synchronized (status){
+                try {
+                    status.wait(1000);
+                } catch (InterruptedException e) {
+                    getLogger().error("Error found with call-back monitor",e);
+                    status.finished = true;
+                }
             }
         }
-        IMultiCenter multiCenter = pc.getMultiCenter();
-        if(multiCenter != null){
-            multiCenter.prepareDirty(compKey,callbackHandler.addOne());
+    }
+
+    private Map<IPrepareDirtyHandler, IAsynListener> getPrepareDirtyHandlers(String compKey,
+                                                                             CallbackHandler callbackHandler,
+                                                                             Map<String, IVirtualClient> clients,
+                                                                             IPrepareDirtyHandler multiCenter) {
+        Map<IPrepareDirtyHandler, IAsynListener> ret = new HashMap<>();
+        for(IVirtualClient client: clients.values()) {
+            if (client.hasKey(compKey)) {
+                IAsynListener iAsynListener = callbackHandler.addOne();
+                ret.put( client,iAsynListener);
+            }
         }
-        callbackHandler.start(pc.getAgreeTimeout());
+        if(multiCenter != null) {
+            IAsynListener iAsynListener = callbackHandler.addOne();
+            ret.put(multiCenter, iAsynListener);
+        }
+        return ret;
+    }
+
+    private void prepareDirty(String compKey, Map<IPrepareDirtyHandler, IAsynListener> clients, IPhysicalCenter pc) {
+        Map<IPrepareDirtyHandler, IAsynListener> ret = new HashMap<>();
+        for(IPrepareDirtyHandler client: clients.keySet()){
+            getLogger().info("Prepare {}'s {} to dirty!",client.toString(), compKey);
+            IAsynListener iAsynListener = clients.get(client);
+            client.prepareDirty(compKey, iAsynListener);
+        }
     }
 }
