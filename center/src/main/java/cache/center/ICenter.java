@@ -11,7 +11,7 @@ import java.util.Map;
  * @author lidong@date 2023-10-24@version 1.0
  * The local or remote center should implement this interface to manage cache.
  */
-public interface ICenter extends IBaseCenter, ILogable {
+public interface ICenter extends IVirtualCenterInClient, IVirtualCenterInSource, ILogable {
     /**
      * Return the physical implement of this center. There may be several physical implements,
      * e.g. local center, remote center.
@@ -39,14 +39,14 @@ public interface ICenter extends IBaseCenter, ILogable {
     }
 
     @Override
-    default void put(String compKey, ICenterCacheData cacheData) {
+    default void put( String compKey, ICacheData cacheData) {
         IPhysicalCenter pc = getPhysicalCenter();
         Object locker = pc.getLocker(compKey);
         synchronized (locker) {
             if(pc.isDirty(compKey)) {
                 if(pc.isAgreementReached(compKey)) {
                     pc.setDirty(compKey, false);
-                    pc.putToLocalCache(compKey, cacheData);
+                    pc.putToLocalCache(compKey, (ICenterCacheData) cacheData);
                     getLogger().info("Put data {} to center, value is {}." ,compKey,cacheData);
                 }else{
                     throw new RuntimeException("Unexpected assignment error of key:" + compKey);

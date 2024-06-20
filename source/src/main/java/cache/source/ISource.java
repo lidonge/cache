@@ -1,7 +1,7 @@
 package cache.source;
 
 import cache.ICompositeKey;
-import cache.IVirtualCenter;
+import cache.IVirtualCenterInSource;
 
 /**
  * @author lidong@date 2023-10-24@version 1.0
@@ -12,7 +12,7 @@ public interface ISource extends IContentChangedListener {
     default void onContentChanged(ICompositeKey keys){
         String compKey = keys.getCompositeKey();
 //        ICacheData cached = loadCachedDataFromStorage(compKey);
-        IVirtualCenter center = getCenter();
+        IVirtualCenterInSource center = getCenter();
         center.onCacheChanged(compKey);
     }
 
@@ -24,5 +24,5 @@ public interface ISource extends IContentChangedListener {
      * Get the  local/remote cache managing center.
      * @return
      */
-    IVirtualCenter getCenter();
+    IVirtualCenterInSource getCenter();
 }

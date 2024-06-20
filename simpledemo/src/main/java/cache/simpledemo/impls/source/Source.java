@@ -1,6 +1,6 @@
 package cache.simpledemo.impls.source;
 
-import cache.IVirtualCenter;
+import cache.IVirtualCenterInSource;
 import cache.source.ISource;
 
 /**
@@ -17,7 +17,7 @@ public class Source implements ISource {
     }
 
     @Override
-    public IVirtualCenter getCenter() {
+    public IVirtualCenterInSource getCenter() {
         return virtualCenter;
     }
 }

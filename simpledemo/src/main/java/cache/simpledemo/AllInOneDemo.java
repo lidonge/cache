@@ -92,7 +92,7 @@ public class AllInOneDemo implements ILogable {
             Client client =worker.getTarget();
             IClientCacheData cacheData = client.getCache().getAndPutIfDirty(keys, new IBusinessService() {
                 @Override
-                public IClientCacheData getData(ICompositeKey key) {
+                public IClientCacheData getData() {
                     return new DemoCacheData(keys.getCompositeKey());
                 }
             });
@@ -131,7 +131,7 @@ public class AllInOneDemo implements ILogable {
         Client ret  = new Client(true,cache );
         VirtualCenterInClient virtualCenterInClient = new VirtualCenterInClient(ret);
         pcc.setVirtualCenter(virtualCenterInClient);
-        virtualCenterInClient.setVirtualCenterInSource(source.getCenter());
+        virtualCenterInClient.setCenter(center);
 //        virtualCenterInClient.registerClient(ret.getName(), ret);
 
         cache.setClient(ret);

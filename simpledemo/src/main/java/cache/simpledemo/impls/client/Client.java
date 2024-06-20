@@ -1,8 +1,8 @@
 package cache.simpledemo.impls.client;
 
+import cache.IVirtualCenterInClient;
 import cache.client.ICache;
 import cache.client.IClient;
-import cache.IVirtualCenter;
 
 /**
  * @author lidong@date 2023-10-25@version 1.0
@@ -34,7 +34,7 @@ public class Client implements IClient {
     }
 
     @Override
-    public IVirtualCenter getClientRegister() {
+    public IVirtualCenterInClient getClientRegister() {
         return clientRegister;
     }
 

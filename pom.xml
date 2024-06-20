@@ -15,6 +15,7 @@
         <module>center</module>
         <module>client</module>
         <module>source</module>
+        <module>demo</module>
     </modules>
 
     <properties>

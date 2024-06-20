@@ -4,24 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="Add multiple centers support">
-      <change afterPath="$PROJECT_DIR$/base/src/main/java/cache/util/IRetryHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/base/src/main/java/cache/util/IRetryTool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/ServiceCallException.java" afterDir="false" />
+    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="Re-construct. And finish TODO of timeout waiting/retry mechanism in ICenter.java">
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/cache/IVirtualCenterInSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/cache/ILogable.java" beforeDir="false" afterPath="$PROJECT_DIR$/base/src/main/java/cache/util/ILogable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/cache/IVirtualClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IVirtualClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/CallbackHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/CallbackHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/cache/IBaseCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IBaseCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/cache/IVirtualCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IVirtualCenterInClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/base/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/center/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/center/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/ICenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/ICenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/IMultiCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IPrepareDirtyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/IPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/IPhysicalCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/IBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/IBusinessService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/ICache.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/ICache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/IClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/IClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/PhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/PhysicalCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/Source.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/Source.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/source/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/src/main/java/cache/source/ISource.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/src/main/java/cache/source/ISource.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,26 +65,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "19",
-    "last_opened_file_path": "/Users/lidong/gitspace/cache",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.51207244",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/lidong/gitspace/cache&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.51207244&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="cache.util" />
@@ -93,6 +100,9 @@
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="cache.simpledemo.impls" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cache" />
+    </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
@@ -103,7 +113,6 @@
   <component name="RunManager">
     <configuration name="AllInOneDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cache.simpledemo.AllInOneDemo" />
-      <module name="simpledemo" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cache.simpledemo.*" />
@@ -159,6 +168,8 @@
       <workItem from="1718092456996" duration="1516000" />
       <workItem from="1718107362521" duration="20824000" />
       <workItem from="1718328866909" duration="1724000" />
+      <workItem from="1718703738463" duration="642000" />
+      <workItem from="1718853590182" duration="9342000" />
     </task>
     <task id="LOCAL-00001" summary="Finish core logic and interfaces">
       <option name="closed" value="true" />
@@ -272,18 +283,49 @@
       <option name="project" value="LOCAL" />
       <updated>1718273002222</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Re-construct. And finish TODO of timeout waiting/retry mechanism in ICenter.java">
+      <option name="closed" value="true" />
+      <created>1718619202923</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1718619202923</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -300,6 +342,7 @@
     <MESSAGE value="Modify the client mechanism and make sure not to register the source first" />
     <MESSAGE value="modify structure" />
     <MESSAGE value="Add multiple centers support" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add multiple centers support" />
+    <MESSAGE value="Re-construct. And finish TODO of timeout waiting/retry mechanism in ICenter.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Re-construct. And finish TODO of timeout waiting/retry mechanism in ICenter.java" />
   </component>
 </project>

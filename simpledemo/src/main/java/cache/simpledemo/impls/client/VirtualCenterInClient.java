@@ -1,17 +1,14 @@
 package cache.simpledemo.impls.client;
 
-import cache.IBaseClient;
-import cache.ICacheData;
-import cache.ICenterCacheData;
-import cache.IClientCacheData;
-import cache.IVirtualCenter;
+import cache.*;
+import cache.simpledemo.impls.source.Center;
 import cache.simpledemo.impls.source.VirtualClient;
 
 /**
  * @author lidong@date 2023-10-25@version 1.0
  */
-public class VirtualCenterInClient implements IVirtualCenter {
-    private IVirtualCenter virtualCenterInSource;
+public class VirtualCenterInClient implements IVirtualCenterInClient {
+    private Center center;
     private Client client;
 
 
@@ -20,43 +17,32 @@ public class VirtualCenterInClient implements IVirtualCenter {
         client.setVirtualCenter(this);
     }
 
-    public void setVirtualCenterInSource(IVirtualCenter virtualCenterInSource) {
-        this.virtualCenterInSource = virtualCenterInSource;
-    }
-
-    //Called from center to client side.
-    @Override
-    public void onCacheChanged(String compKey) {
-        client.prepareDirty(compKey);
-    }
-
-    @Override
-    public ICacheData get(String compKey) {
-        return virtualCenterInSource.get(compKey);
-    }
-
-    @Override
-    public void put(String compKey, ICenterCacheData cacheData) {
-        virtualCenterInSource.put(compKey,cacheData);
-    }
-
-    @Override
-    public boolean isAgreementReached(String compKey) {
-        return virtualCenterInSource.isAgreementReached(compKey);
+    public void setCenter(Center center) {
+        this.center = center;
     }
 
     @Override
     public boolean registerClient(String name, String key, IBaseClient client) {
-        return virtualCenterInSource.registerClient(name,key, new VirtualClient((Client) client));
+        return center.registerClient(name,key, new VirtualClient((Client) client));
     }
 
     @Override
     public void unregisterClient(String name) {
-        virtualCenterInSource.unregisterClient(name);
+        center.unregisterClient(name);
     }
 
     @Override
-    public void putToCenter(String compKey, IClientCacheData cacheData) {
-        this.put(compKey, (ICenterCacheData) cacheData);
+    public ICacheData get(String compKey) {
+        return center.get(compKey);
+    }
+
+    @Override
+    public void put(String compKey, ICacheData cacheData) {
+        center.put(compKey, (ICenterCacheData) cacheData);
+    }
+
+    @Override
+    public boolean isAgreementReached(String compKey) {
+        return center.isAgreementReached(compKey);
     }
 }

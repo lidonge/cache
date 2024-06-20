@@ -2,8 +2,8 @@ package cache.client;
 
 import cache.IApplicationListener;
 import cache.IBaseClient;
+import cache.IVirtualCenterInClient;
 import cache.util.ILogable;
-import cache.IVirtualCenter;
 
 /**
  * @author lidong@date 2023-10-24@version 1.0
@@ -33,7 +33,7 @@ public interface IClient extends IBaseClient, IApplicationListener, ILogable {
     default void onStopping(){
         getLogger().info("Client {} on stopping, the key app flag is {}.", getName(),isKeyApp());
         if(isKeyApp()) {
-            IVirtualCenter register = getClientRegister();
+            IVirtualCenterInClient register = getClientRegister();
             register.unregisterClient(getName());
         }
     }
@@ -54,5 +54,5 @@ public interface IClient extends IBaseClient, IApplicationListener, ILogable {
      * Get the client register which communicate with center.
      * @return
      */
-    IVirtualCenter getClientRegister();
+    IVirtualCenterInClient getClientRegister();
 }

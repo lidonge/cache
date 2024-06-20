@@ -68,7 +68,6 @@ public class PhysicalClientCache implements IPhysicalCache, ILogable {
     @Override
     public void put(String compKey, IClientCacheData cacheData) {
         map.put(compKey,cacheData);
-        virtualCenter.put(compKey, (ICenterCacheData) cacheData);
     }
 
     @Override

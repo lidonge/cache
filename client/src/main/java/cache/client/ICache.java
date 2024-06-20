@@ -2,8 +2,8 @@ package cache.client;
 
 import cache.IClientCacheData;
 import cache.ICompositeKey;
+import cache.IVirtualCenterInClient;
 import cache.util.ILogable;
-import cache.IVirtualCenter;
 
 /**
  * @author lidong@date 2023-10-24@version 1.0
@@ -18,12 +18,12 @@ public interface ICache extends ILogable {
     IClient getClient();
 
     /**
-     * Get specified data from cache.
+     * Get specified data from cache, if data is dirty then refresh it from center.
      *
      * @param key
-     * @return
+     * @return null if center is dirty
      */
-    default IClientCacheData getAndPutIfDirty(ICompositeKey key, IBusinessService service) throws ServiceCallException{
+    default IClientCacheData get(ICompositeKey key){
         IPhysicalCache pc = getPhysicalCache();
         String compKey = key.getCompositeKey();
         Object locker = pc.getLocker(compKey);
@@ -32,7 +32,7 @@ public interface ICache extends ILogable {
             if (!pc.isKeyInit(compKey)) {
                 //It's the first time to get data, register the key to the center
                 IClient client = getClient();
-                IVirtualCenter virtualCenter = client.getClientRegister();
+                IVirtualCenterInClient virtualCenter = client.getClientRegister();
                 boolean isAgreementReached = virtualCenter.registerClient(client.getName(), compKey, client);
                 getLogger().info("Client {} regiester {} to center.", getClient().getName(), compKey);
                 if (!isAgreementReached)
@@ -43,28 +43,45 @@ public interface ICache extends ILogable {
             }
             refreshIfDirty(compKey);
             data = pc.get(compKey);
-            if(data  == null){
-                //TODO Concurrency for a specific key may cause efficiency problems, but this is very rare.
-                data = service.getData(key);
-                putToLocalAndCenter(compKey, data);
-                getLogger().info("After put new data, {} value is {}, new data put to cache.",getClient().getName(), data);
-            }
         }
         getLogger().info("Client {} get {} value {} from client cache.", getClient().getName(), compKey, data);
 
         return data;
     }
+    /**
+     * Get specified data from cache, if center is dirty, put new data to the local and center.
+     *
+     * @param key
+     * @return
+     */
+    default IClientCacheData getAndPutIfDirty(ICompositeKey key, IBusinessService service) throws ServiceCallException{
+        IPhysicalCache pc = getPhysicalCache();
+        String compKey = key.getCompositeKey();
+        Object locker = pc.getLocker(compKey);
+        synchronized (locker) {
+            IClientCacheData data = get(key);
+            if(data  == null){
+                //TODO Concurrency for a specific key may cause efficiency problems, but this is very rare.
+                data = service.getData();
+                putToLocalAndCenter(compKey, data);
+                getLogger().info("After put new data, {} value is {}, new data put to cache.",getClient().getName(), data);
+            }
+
+            return data;
+        }
+    }
 
     /**
-     * Should be called if the cache is empty.
+     * Should be called if the cache is dirty, put new data to the local and center.
      *
      * @param compKey
      * @param cacheData
      */
-    private void putToLocalAndCenter(String compKey, IClientCacheData cacheData) {
+    default void putToLocalAndCenter(String compKey, IClientCacheData cacheData) {
         IPhysicalCache pc = getPhysicalCache();
         pc.put(compKey, cacheData);
-        getClient().getClientRegister().putToCenter(compKey, cacheData);
+        IClient client = getClient();
+        client.getClientRegister().put(compKey, cacheData);
     }
 
     /**
