@@ -19,6 +19,10 @@ public class Client implements IClient {
         this.cache = cache;
     }
 
+    public ClientCache getCache() {
+        return cache;
+    }
+
     public void setVirtualCenter(VirtualCenterInClient clientRegister) {
         this.clientRegister = clientRegister;
     }
@@ -26,11 +30,6 @@ public class Client implements IClient {
     @Override
     public boolean isKeyApp() {
         return isKeyApp;
-    }
-
-    @Override
-    public ICache getCache() {
-        return cache;
     }
 
     @Override

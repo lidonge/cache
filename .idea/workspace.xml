@@ -4,31 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="Re-construct. And finish TODO of timeout waiting/retry mechanism in ICenter.java">
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/cache/IVirtualCenterInSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="Split center to client and source side">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/cache/IBaseCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IBaseCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/cache/IVirtualCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IVirtualCenterInClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/base/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/center/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/center/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/ICenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/ICenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/IBusinessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/IBusinessService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/ICache.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/ICache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/IClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/IClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/IPhysicalCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/IPhysicalCache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/VirtualCenterInClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/Source.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/Source.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualCenterInSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/source/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/src/main/java/cache/source/ISource.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/src/main/java/cache/source/ISource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +152,8 @@
       <workItem from="1718107362521" duration="20824000" />
       <workItem from="1718328866909" duration="1724000" />
       <workItem from="1718703738463" duration="642000" />
-      <workItem from="1718853590182" duration="9342000" />
+      <workItem from="1718853590182" duration="11063000" />
+      <workItem from="1718885315485" duration="3017000" />
     </task>
     <task id="LOCAL-00001" summary="Finish core logic and interfaces">
       <option name="closed" value="true" />
@@ -291,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718619202923</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Split center to client and source side">
+      <option name="closed" value="true" />
+      <created>1718883901627</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1718883901627</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,6 +335,7 @@
     <MESSAGE value="modify structure" />
     <MESSAGE value="Add multiple centers support" />
     <MESSAGE value="Re-construct. And finish TODO of timeout waiting/retry mechanism in ICenter.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Re-construct. And finish TODO of timeout waiting/retry mechanism in ICenter.java" />
+    <MESSAGE value="Split center to client and source side" />
+    <option name="LAST_COMMIT_MESSAGE" value="Split center to client and source side" />
   </component>
 </project>

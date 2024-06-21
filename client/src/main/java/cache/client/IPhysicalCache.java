@@ -7,33 +7,6 @@ import cache.IClientCacheData;
  * A physical cache implement by client application.
  */
 public interface IPhysicalCache {
-    /**
-     * Test if all client reached the specified agreement.
-     * @param key
-     * @return
-     */
-    boolean isAllAgreed(String key);
-
-    /**
-     * Refresh local cache from remote source side or redis.
-     * @param key
-     * @return
-     */
-    void refreshFromRemote(String key);
-
-    /**
-     * Set the prepare-dirty flag for the specified data.
-     *
-     * @param key
-     */
-    void setPrepareDirty(String key, boolean prepare);
-
-    /**
-     * Test if current status is prepare-dirty of the specified data.
-     * @param key
-     * @return
-     */
-    boolean isPrepareDirty(String key);
 
     /**
      * Get specified data from local.

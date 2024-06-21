@@ -1,5 +1,6 @@
 package cache.client;
 
+import cache.ICacheData;
 import cache.IClientCacheData;
 import cache.ICompositeKey;
 import cache.IVirtualCenterInClient;
@@ -36,7 +37,7 @@ public interface ICache extends ILogable {
                 boolean isAgreementReached = virtualCenter.registerClient(client.getName(), compKey, client);
                 getLogger().info("Client {} regiester {} to center.", getClient().getName(), compKey);
                 if (!isAgreementReached)
-                    setPrepareDirty(compKey);
+                    setPrepareDirty(compKey,true);
             }
             if (isPrepareDirty(compKey)) {
                 dirtyIfAgreementReached(compKey);
@@ -96,9 +97,10 @@ public interface ICache extends ILogable {
      *
      * @param key
      */
-    default void setPrepareDirty(String key) {
+    default void setPrepareDirty(String key, boolean prepare) {
         getLogger().info("Client {} setPrepareDirty {} .", getClient().getName(), key);
-        getPhysicalCache().setPrepareDirty(key, true);
+        IClientCacheData data = getPhysicalCache().get(key);
+        data.setPrepareDirty(prepare);
     }
 
     /**
@@ -108,7 +110,10 @@ public interface ICache extends ILogable {
      * @return true is dirty.
      */
     default boolean isPrepareDirty(String key) {
-        boolean ret = getPhysicalCache().isPrepareDirty(key);
+        IClientCacheData data =getPhysicalCache().get(key);
+        if(data == null)
+            return false;
+        boolean ret = data.isPrepareDirty();
         getLogger().info("Client {}'s data {} prepare dirty flag is {} .", getClient().getName(), key, ret);
         return ret;
     }
@@ -120,17 +125,19 @@ public interface ICache extends ILogable {
         getLogger().info("Client {}'s {} refreshIfDirty is {}.", getClient().getName(), compKey, dirty);
         if (dirty) {
             // null means dirty or first time read from cache
-            pc.refreshFromRemote(compKey);
+            ICacheData data = getClient().getClientRegister().get(compKey);
+            if(data != null)
+                pc.put(compKey, (IClientCacheData) data);
         }
     }
 
     private void dirtyIfAgreementReached(String compKey) {
         IPhysicalCache pc = getPhysicalCache();
-        boolean isAllAgreed = pc.isAllAgreed(compKey);
+        boolean isAllAgreed = getClient().getClientRegister().isAgreementReached(compKey);
         getLogger().info("All agreed flag is {}, if true Refresh client {} .", isAllAgreed, getClient().getName());
 
         if (isAllAgreed) {
-            pc.setPrepareDirty(compKey, false);
+            setPrepareDirty(compKey, false);
             pc.setDirty(compKey);
         }
     }

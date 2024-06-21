@@ -10,15 +10,6 @@ import cache.util.ILogable;
  * A cache client.
  */
 public interface IClient extends IBaseClient, IApplicationListener, ILogable {
-    /**
-     * Called from center if a specified data is preparing dirty.
-     * @param compKey
-     */
-    default void prepareDirty(String compKey){
-//        getLogger().info("Client {} prepareDirty with key {}.",getName(),compKey);
-        getCache().setPrepareDirty(compKey);
-    }
-
     @Override
     default void onInitializing(){
 //        getLogger().info("Client {} on init, the key app flag is {}.", getName(),isKeyApp());
@@ -43,12 +34,6 @@ public interface IClient extends IBaseClient, IApplicationListener, ILogable {
      * @return
      */
     boolean isKeyApp();
-
-    /**
-     * Get the implement of the cache.
-     * @return
-     */
-    ICache getCache();
 
     /**
      * Get the client register which communicate with center.

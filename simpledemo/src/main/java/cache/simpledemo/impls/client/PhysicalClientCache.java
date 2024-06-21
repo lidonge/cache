@@ -32,35 +32,6 @@ public class PhysicalClientCache implements IPhysicalCache, ILogable {
     }
 
     @Override
-    public boolean isAllAgreed(String key) {
-        return virtualCenter.isAgreementReached(key);
-    }
-
-    @Override
-    public void refreshFromRemote(String key) {
-        ICenterCacheData centerCacheData = (ICenterCacheData) virtualCenter.get(key);
-        IClientCacheData data = (IClientCacheData) centerCacheData;
-        if(centerCacheData != null && !centerCacheData.isAllAgreementReached()){
-            data.setPrepareDirty(true);
-        }
-        getLogger().info("Client {} refreshFromRemote key is {} and data is {}.", client.getName(),key,data);
-        map.put(key,data);
-    }
-
-    @Override
-    public void setPrepareDirty(String key, boolean prepare) {
-        map.get(key).setPrepareDirty(prepare);
-    }
-
-    @Override
-    public boolean isPrepareDirty(String key) {
-        IClientCacheData data =map.get(key);
-        if(data == null)
-            return false;
-        return data.isPrepareDirty();
-    }
-
-    @Override
     public IClientCacheData get(String key) {
         return map.get(key);
     }
