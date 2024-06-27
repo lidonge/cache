@@ -15,7 +15,6 @@
         <module>center</module>
         <module>client</module>
         <module>source</module>
-        <module>sockdemo</module>
     </modules>
 
     <properties>
