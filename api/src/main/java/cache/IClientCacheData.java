@@ -17,4 +17,6 @@ public interface IClientCacheData extends ICacheData {
      * Set the data to dirty
      */
     void setPrepareDirty(boolean prepare);
+
+    IClientCacheData clone();
 }

@@ -15,7 +15,7 @@
         <module>center</module>
         <module>client</module>
         <module>source</module>
-        <module>demo</module>
+        <module>sockdemo</module>
     </modules>
 
     <properties>
@@ -39,6 +39,24 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
             <version>1.4.11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline</artifactId>
+            <version>3.26.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline-groovy</artifactId>
+            <version>3.26.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.44.1.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

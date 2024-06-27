@@ -130,7 +130,7 @@
             <mxPoint x="140" y="452" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zKBPUxuciQu65vhIFHAe-42" value="S(Source)" style="swimlane;whiteSpace=wrap" vertex="1" parent="1">
+        <mxCell id="zKBPUxuciQu65vhIFHAe-42" value="S(cache.simpledemo.CLI)" style="swimlane;whiteSpace=wrap" vertex="1" parent="1">
           <mxGeometry x="721.5" y="128" width="280" height="572" as="geometry" />
         </mxCell>
         <mxCell id="pCzn_DUp9kQx-t3wHIik-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="zKBPUxuciQu65vhIFHAe-42" source="pCzn_DUp9kQx-t3wHIik-1" target="pCzn_DUp9kQx-t3wHIik-3">
@@ -293,7 +293,7 @@
         <mxCell id="k82Oito8XOEwwU88DEr8-40" value="Unexpected assignment error" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="k82Oito8XOEwwU88DEr8-16">
           <mxGeometry x="147.5" y="472" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="k82Oito8XOEwwU88DEr8-17" value="S(Source)" style="swimlane;whiteSpace=wrap" vertex="1" parent="1">
+        <mxCell id="k82Oito8XOEwwU88DEr8-17" value="S(cache.simpledemo.CLI)" style="swimlane;whiteSpace=wrap" vertex="1" parent="1">
           <mxGeometry x="721.5" y="128" width="280" height="572" as="geometry" />
         </mxCell>
         <mxCell id="k82Oito8XOEwwU88DEr8-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="k82Oito8XOEwwU88DEr8-19" target="k82Oito8XOEwwU88DEr8-23">
@@ -312,7 +312,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="ZrpsHQVzRWjbztfIemo8-1" value="S(Source)" style="swimlane;whiteSpace=wrap" vertex="1" parent="1">
+        <mxCell id="ZrpsHQVzRWjbztfIemo8-1" value="S(cache.simpledemo.CLI)" style="swimlane;whiteSpace=wrap" vertex="1" parent="1">
           <mxGeometry x="164.5" y="128" width="275.5" height="572" as="geometry" />
         </mxCell>
         <mxCell id="ZrpsHQVzRWjbztfIemo8-2" value="" style="ellipse;shape=startState;fillColor=#000000;strokeColor=#ff0000;" vertex="1" parent="ZrpsHQVzRWjbztfIemo8-1">

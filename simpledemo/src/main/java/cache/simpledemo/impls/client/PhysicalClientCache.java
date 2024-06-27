@@ -58,6 +58,6 @@ public class PhysicalClientCache implements IPhysicalCache, ILogable {
 
     @Override
     public boolean isKeyInit(String compKey) {
-        return get(compKey) == null;
+        return get(compKey) != null;
     }
 }

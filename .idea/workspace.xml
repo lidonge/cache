@@ -4,25 +4,63 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="Split center to client and source side">
+    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="fix client cache">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/CLI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/CompKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sockdemo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sockdemo/src/main/java/Source.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/cache/ICacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/ICacheData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/cache/IClientCacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IClientCacheData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/base/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/center/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/center/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/ICenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/ICenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/IPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/IPhysicalCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/ICache.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/ICache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/IClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/IClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/IPhysicalCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/IPhysicalCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/activities.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/docs/activities.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/DemoCacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/DemoCacheData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/VirtualClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/AbstractPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/AbstractPhysicalCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/source/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/sample">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -48,26 +86,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/lidong/gitspace/cache&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.51207244&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "android.gradle.sync.needed": "true",
+    "git-widget-placeholder": "sample",
+    "jdk.selected.JAVA_MODULE": "19",
+    "last_opened_file_path": "/Users/lidong/gitspace/cache",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.51207244",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="cache.util" />
@@ -91,11 +141,14 @@
     <option name="myCommands">
       <command value="mvn clean" />
       <command value="mvn compile" />
+      <command value="mvn install" />
+      <command value="mvn clean compile install" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.AllInOneDemo">
     <configuration name="AllInOneDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cache.simpledemo.AllInOneDemo" />
+      <module name="cache.simpledemo" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cache.simpledemo.*" />
@@ -106,10 +159,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CLI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CLI" />
+      <module name="cache" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Repl (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Repl" />
+      <module name="cache" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Repl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Repl" />
+      <module name="cache" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Source" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Source" />
+      <module name="cache" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CacheDemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="cache-demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="free.cache.demo.CacheDemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AllInOneDemo" />
-        <item itemvalue="Application.AllInOneDemo" />
+        <item itemvalue="Application.Source" />
+        <item itemvalue="Application.CLI" />
+        <item itemvalue="Application.Repl (1)" />
+        <item itemvalue="Application.Repl" />
       </list>
     </recent_temporary>
   </component>
@@ -153,7 +245,11 @@
       <workItem from="1718328866909" duration="1724000" />
       <workItem from="1718703738463" duration="642000" />
       <workItem from="1718853590182" duration="11063000" />
-      <workItem from="1718885315485" duration="3017000" />
+      <workItem from="1718885315485" duration="16987000" />
+      <workItem from="1719167205304" duration="2001000" />
+      <workItem from="1719192282219" duration="16385000" />
+      <workItem from="1719467393592" duration="137000" />
+      <workItem from="1719467639958" duration="9934000" />
     </task>
     <task id="LOCAL-00001" summary="Finish core logic and interfaces">
       <option name="closed" value="true" />
@@ -283,7 +379,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718883901627</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix client cache">
+      <option name="closed" value="true" />
+      <created>1718931924916</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1718931924917</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,6 +440,18 @@
     <MESSAGE value="Add multiple centers support" />
     <MESSAGE value="Re-construct. And finish TODO of timeout waiting/retry mechanism in ICenter.java" />
     <MESSAGE value="Split center to client and source side" />
-    <option name="LAST_COMMIT_MESSAGE" value="Split center to client and source side" />
+    <MESSAGE value="fix client cache" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix client cache" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

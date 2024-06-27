@@ -3,6 +3,7 @@ package cache.simpledemo.impls.source;
 import cache.IVirtualClient;
 import cache.center.IPhysicalCenter;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -11,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public abstract class AbstractPhysicalCenter implements IPhysicalCenter {
     protected int agreeTimeout = 100;
-    private boolean isOnChanging = false;
+    private Map<String,Boolean> isOnChangings = new HashMap<>();
     private Map<String, IVirtualClient> map = new ConcurrentHashMap<>();
 
     public Map<String, IVirtualClient> getClients() {
@@ -29,13 +30,14 @@ public abstract class AbstractPhysicalCenter implements IPhysicalCenter {
     }
 
     @Override
-    public boolean isOnChanging() {
-        return isOnChanging;
+    public boolean isOnChanging(String compKey) {
+        Boolean isOnChanging = isOnChangings.get(compKey);
+        return isOnChanging != null && isOnChanging ;
     }
 
     @Override
-    public void setOnChanging(boolean onChanging) {
-        isOnChanging = onChanging;
+    public void setOnChanging(String compKey, boolean onChanging) {
+        isOnChangings.put(compKey, onChanging);
     }
 
 }

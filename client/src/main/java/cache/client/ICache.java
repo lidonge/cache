@@ -35,7 +35,7 @@ public interface ICache extends ILogable {
                 IClient client = getClient();
                 IVirtualCenterInClient virtualCenter = client.getClientRegister();
                 boolean isAgreementReached = virtualCenter.registerClient(client.getName(), compKey, client);
-                getLogger().info("Client {} regiester {} to center.", getClient().getName(), compKey);
+                getLogger().info("Client {} regiester {} to center and isAgreementReached {}.", getClient().getName(), compKey,isAgreementReached);
                 if (!isAgreementReached)
                     setPrepareDirty(compKey,true);
             }

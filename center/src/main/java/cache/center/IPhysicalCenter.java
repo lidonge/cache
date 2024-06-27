@@ -89,8 +89,8 @@ public interface IPhysicalCenter {
 
     void putToLocalCache(String compKey, ICenterCacheData cacheData);
 
-    boolean isOnChanging();
-    void setOnChanging(boolean onChanging);
+    boolean isOnChanging(String compKey);
+    void setOnChanging(String compKey, boolean onChanging);
 
     IPrepareDirtyHandler getMultiCenter();
 

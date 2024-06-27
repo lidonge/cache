@@ -1,7 +1,10 @@
 package cache.simpledemo;
 
 
+import cache.ICacheData;
+import cache.ICenterCacheData;
 import cache.ICompositeKey;
+import cache.simpledemo.impls.CompKey;
 import cache.util.ILogable;
 import cache.client.IBusinessService;
 import cache.IClientCacheData;
@@ -15,6 +18,8 @@ import cache.simpledemo.impls.source.Center;
 import cache.simpledemo.impls.source.Source;
 import cache.simpledemo.impls.source.VirtualCenterInSource;
 
+import java.io.IOException;
+
 /**
  * @author lidong@date 2023-10-25@version 1.0
  */
@@ -23,11 +28,16 @@ public class AllInOneDemo implements ILogable {
     private Center center;
     //    private Client[] clients;
     private int clientCount = 2;
+    private ICompositeKey keys[] = new ICompositeKey[]{
+            new CompKey("user:0"),
+            new CompKey("user:1")
+    };
     private ICompositeKey keys_1 = new ICompositeKey() {
         String[] keys = new String[]{"categorize", "type", "name"};
+
         @Override
         public String getCompositeKey() {
-            return ICompositeKey.compositeKeys(keys,getSeparator());
+            return ICompositeKey.compositeKeys(keys, getSeparator());
         }
 
         @Override
@@ -38,10 +48,16 @@ public class AllInOneDemo implements ILogable {
 
     private Worker<Client>[] clientWorkers;
     private Worker<Source> srcWorker;
+
     public static void main(String[] args) {
         AllInOneDemo demo = new AllInOneDemo();
 //        demo.scenarioClientGet(demo.clientWorkers[0], demo.keys_1);
-        demo.updateAndGet();
+//        demo.updateAndGet();
+        try {
+            new CLI(demo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public AllInOneDemo() {
@@ -55,7 +71,7 @@ public class AllInOneDemo implements ILogable {
         source.setVirtualCenter(new VirtualCenterInSource(center));
     }
 
-    void updateAndGet(){
+    void updateAndGet() {
         allClientGet();
         waitForWorkersFinish(clientWorkers);
         getLogger().info("==========================");
@@ -66,43 +82,52 @@ public class AllInOneDemo implements ILogable {
 
     private void waitForWorkersFinish(Worker[] workers) {
         boolean allFin = true;
-        synchronized (this){
-            do{
+        synchronized (this) {
+            do {
                 allFin = true;
                 try {
                     this.wait(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                for(Worker worker: workers) {
+                for (Worker worker : workers) {
                     allFin &= worker.isFinished();
                 }
-            }while(!allFin);
+            } while (!allFin);
         }
     }
 
     private void allClientGet() {
-        for(Worker<Client> clinet: clientWorkers) {
-            scenarioClientGet(clinet,keys_1);
+        for (Worker<Client> clinet : clientWorkers) {
+            scenarioClientGet(clinet, keys_1);
         }
     }
 
-    void scenarioClientGet(Worker<Client> worker, ICompositeKey keys){
-        worker.setTask(() ->{
-            Client client =worker.getTarget();
+    void scenarioClientGet(int client, int key) {
+        scenarioClientGet(clientWorkers[client], keys[key]);
+    }
+
+    void scenarioClientGet(Worker<Client> worker, ICompositeKey keys) {
+        worker.setTask(() -> {
+            Client client = worker.getTarget();
             IClientCacheData cacheData = client.getCache().getAndPutIfDirty(keys, new IBusinessService() {
                 @Override
                 public IClientCacheData getData() {
                     return new DemoCacheData(keys.getCompositeKey());
                 }
             });
-            getLogger().info("{} scenarioClientGet value is {}, new data put to cache.",client.getName(), cacheData);
+            getLogger().info("{} scenarioClientGet value is {}, new data put to cache.", client.getName(), cacheData);
         });
 
     }
-    void scenarioDataUpdated(){
+
+    void scenarioDataUpdated(int key) {
+        source.onContentChanged(keys[key]);
+    }
+
+    void scenarioDataUpdated() {
         //source data updated
-        srcWorker.setTask(() ->{
+        srcWorker.setTask(() -> {
             source.onContentChanged(keys_1);
         });
 
@@ -114,22 +139,27 @@ public class AllInOneDemo implements ILogable {
         new Thread(srcWorker).start();
     }
 
-    void initClients(){
+    void initClients() {
 //        clients = new Client[clientCount];
         clientWorkers = new Worker[clientCount];
-        for(int i =0;i<clientCount;i++){
+        for (int i = 0; i < clientCount; i++) {
 //            clients[i] = initClient();
             clientWorkers[i] = new Worker(initClient());
             new Thread(clientWorkers[i]).start();
         }
     }
 
-    Client initClient(){
+    Client initClient() {
         PhysicalClientCache pcc = new PhysicalClientCache();
         ClientCache cache = new ClientCache(pcc);
 
-        Client ret  = new Client(true,cache );
-        VirtualCenterInClient virtualCenterInClient = new VirtualCenterInClient(ret);
+        Client ret = new Client(true, cache);
+        VirtualCenterInClient virtualCenterInClient = new VirtualCenterInClient(ret){
+            public ICacheData get(String compKey) {
+                IClientCacheData cacheData = (IClientCacheData) super.get(compKey);
+                return cacheData == null ? null : cacheData.clone();
+            }
+        };
         pcc.setVirtualCenter(virtualCenterInClient);
         virtualCenterInClient.setCenter(center);
 //        virtualCenterInClient.registerClient(ret.getName(), ret);
@@ -139,7 +169,8 @@ public class AllInOneDemo implements ILogable {
         return ret;
     }
 }
-class Worker<T> implements Runnable{
+
+class Worker<T> implements Runnable {
     ITask task;
     T target;
 
@@ -147,20 +178,21 @@ class Worker<T> implements Runnable{
         this.target = target;
     }
 
-    T getTarget(){
+    T getTarget() {
         return target;
     }
+
     @Override
     public void run() {
-        while(true){
-            synchronized (this){
+        while (true) {
+            synchronized (this) {
                 try {
                     this.wait(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            if(task != null) {
+            if (task != null) {
                 try {
                     task.exec();
                 } catch (ServiceCallException e) {
@@ -170,21 +202,22 @@ class Worker<T> implements Runnable{
             }
         }
     }
-    void setTask(ITask task){
+
+    void setTask(ITask task) {
         this.task = task;
-        synchronized (this){
+        synchronized (this) {
             this.notify();
         }
     }
 
-    boolean isFinished(){
-        synchronized (this){
+    boolean isFinished() {
+        synchronized (this) {
             return task == null;
         }
     }
 }
 
 @FunctionalInterface
-interface ITask{
+interface ITask {
     void exec() throws ServiceCallException;
 }

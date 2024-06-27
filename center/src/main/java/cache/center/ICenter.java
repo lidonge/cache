@@ -3,8 +3,11 @@ package cache.center;
 import cache.*;
 import cache.util.ILogable;
 import cache.util.IRetryHandler;
+import groovy.util.MapEntry;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,6 +24,7 @@ public interface ICenter extends IVirtualCenterInClient, IVirtualCenterInSource,
 
     @Override
     default ICenterCacheData get(String compKey){
+        getLogger().info("get compKey= {}", compKey);
         IPhysicalCenter pc = getPhysicalCenter();
         Object locker = pc.getLocker(compKey);
         synchronized (locker) {
@@ -40,6 +44,7 @@ public interface ICenter extends IVirtualCenterInClient, IVirtualCenterInSource,
 
     @Override
     default void put( String compKey, ICacheData cacheData) {
+        getLogger().info("put compKey= {}, data={}", compKey, cacheData);
         IPhysicalCenter pc = getPhysicalCenter();
         Object locker = pc.getLocker(compKey);
         synchronized (locker) {
@@ -57,12 +62,13 @@ public interface ICenter extends IVirtualCenterInClient, IVirtualCenterInSource,
 
    @Override
     default void onCacheChanged(String compKey){
+       getLogger().info("onCacheChanged compKey= {}", compKey);
         IPhysicalCenter pc = getPhysicalCenter();
         Object locker = pc.getLocker(compKey);
         synchronized (locker) {
             //This is used to optimize the situation where the source is continuously updated.
-            if(!pc.isDirty(compKey) && !pc.isOnChanging()) {
-                pc.setOnChanging(true);
+            if(!pc.isDirty(compKey) && !pc.isOnChanging(compKey)) {
+                pc.setOnChanging(compKey,true);
                 //clear agreement marker of the center
                 pc.clearAgreementFlag(compKey);
 //                pc.setDirty(compKey, true);
@@ -76,6 +82,7 @@ public interface ICenter extends IVirtualCenterInClient, IVirtualCenterInSource,
      * @param compKey
      */
     default void onAgreementReached(String compKey){
+        getLogger().info("onAgreementReached compKey= {}", compKey);
         IPhysicalCenter pc = getPhysicalCenter();
         Object locker = pc.getLocker(compKey);
         synchronized (locker) {
@@ -84,12 +91,13 @@ public interface ICenter extends IVirtualCenterInClient, IVirtualCenterInSource,
 //            pc.putToLocalCache(compKey, null);
             //set agreement marker of the center
             pc.setAgreementFlag(compKey);
-            pc.setOnChanging(false);
+            pc.setOnChanging(compKey,false);
         }
     }
 
     @Override
     default boolean registerClient(String name, String key, IBaseClient client){
+        getLogger().info("register client name= {}, key = {} , client = {}", name,key,client);
         Map<String, IVirtualClient> clients = getPhysicalCenter().getClients();
         IVirtualClient  vc = clients.get(name);
         if(vc == null){
@@ -103,6 +111,7 @@ public interface ICenter extends IVirtualCenterInClient, IVirtualCenterInSource,
 
     @Override
     default void unregisterClient(String name ){
+        getLogger().info("un- register client name= {}", name);
         Map<String, IVirtualClient> clients = getPhysicalCenter().getClients();
         clients.remove(name);
     }
@@ -112,6 +121,7 @@ public interface ICenter extends IVirtualCenterInClient, IVirtualCenterInSource,
         boolean finished = false;
     };
     private void notifyAllPrepareDirty(String compKey){
+        getLogger().info("notifyAllPrepareDirty compKy={}", compKey);
         IPhysicalCenter pc = getPhysicalCenter();
         Map<String, IVirtualClient> clients = pc.getClients();
         CallbackHandler callbackHandler = new CallbackHandler(compKey);
@@ -122,30 +132,39 @@ public interface ICenter extends IVirtualCenterInClient, IVirtualCenterInSource,
         pc.getRetryTool().retry(() -> sendToClientsSync(compKey, allClients, pc, callbackHandler, status));
     }
 
-    private void createAsynCallbackable(CallbackHandler callbackHandler, CallbackStatus status, IPhysicalCenter pc, Map<IPrepareDirtyHandler, IAsynListener> allClients) {
+    private void createAsynCallbackable(CallbackHandler callbackHandler, CallbackStatus status,
+                                        IPhysicalCenter pc, Map<IPrepareDirtyHandler, IAsynListener> allClients) {
         callbackHandler.setCallbackable(compKey -> {
+            boolean consistencyFirst = pc.isConsistencyFirst();
             status.finished = true;
-            if(pc.isConsistencyFirst()){
-                for(IPrepareDirtyHandler key: allClients.keySet()){
-                    IAsynListener listener = allClients.get(key);
+            getLogger().info("All finished compKey={} and isConsistencyFirst ={}." , compKey,consistencyFirst);
+            if(consistencyFirst){
+                List<Map.Entry<IPrepareDirtyHandler, IAsynListener>> list = new ArrayList<>(allClients.entrySet());
+                for(Map.Entry<IPrepareDirtyHandler, IAsynListener> entry: list){
+                    IAsynListener listener = entry.getValue();
                     switch (listener.getStatus()){
                         case timeout :
                             status.hasTimeout = true;
                             break;
                         case error:
-                            allClients.remove(key);
-                            if(key instanceof IVirtualClient)
-                                unregisterClient(((IVirtualClient) key).getName());
+                            allClients.remove(entry.getKey());
+                            if(entry.getKey() instanceof IVirtualClient)
+                                unregisterClient(((IVirtualClient) entry.getKey()).getName());
                             break;
                         case success:
-                            allClients.remove(key);
+                            allClients.remove(entry.getKey());
                             break;
                     }
                 }
             }else
+                allClients.clear();
+
+            if(allClients.size() == 0)
                 onAgreementReached(compKey);
 
-            status.notify();
+            synchronized (status) {
+                status.notify();
+            }
         });
     }
 
@@ -187,7 +206,12 @@ public interface ICenter extends IVirtualCenterInClient, IVirtualCenterInSource,
         for(IPrepareDirtyHandler client: clients.keySet()){
             getLogger().info("Prepare {}'s {} to dirty!",client.toString(), compKey);
             IAsynListener iAsynListener = clients.get(client);
-            client.prepareDirty(compKey, iAsynListener);
+            try {
+                client.prepareDirty(compKey, iAsynListener);
+            }catch (Throwable e){
+                getLogger().error("Error while prepare dirty of .", e );
+                iAsynListener.onError();
+            }
         }
     }
 }

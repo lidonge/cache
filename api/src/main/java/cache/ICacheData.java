@@ -5,5 +5,5 @@ package cache;
  * The data in cache.
  */
 public interface ICacheData {
-
+    Object getValue();
 }
