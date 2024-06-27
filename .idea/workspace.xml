@@ -4,34 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="fix client cache">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/CLI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/CompKey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sockdemo/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sockdemo/src/main/java/Source.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="a24d8537-dcec-4510-aa39-d4eaefe26299" name="Changes" comment="use cli to debug, and fix bugs of core">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/cache/ICacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/ICacheData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/cache/IClientCacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/cache/IClientCacheData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/base/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/center/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/center/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/ICenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/ICenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/center/src/main/java/cache/center/IPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/center/src/main/java/cache/center/IPhysicalCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/cache/client/ICache.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/cache/client/ICache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/activities.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/docs/activities.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/AllInOneDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/DemoCacheData.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/DemoCacheData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/client/PhysicalClientCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/AbstractPhysicalCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/simpledemo/src/main/java/cache/simpledemo/impls/source/AbstractPhysicalCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/source/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +225,7 @@
       <workItem from="1719167205304" duration="2001000" />
       <workItem from="1719192282219" duration="16385000" />
       <workItem from="1719467393592" duration="137000" />
-      <workItem from="1719467639958" duration="9934000" />
+      <workItem from="1719467639958" duration="11895000" />
     </task>
     <task id="LOCAL-00001" summary="Finish core logic and interfaces">
       <option name="closed" value="true" />
@@ -387,7 +363,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718931924917</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="use cli to debug, and fix bugs of core">
+      <option name="closed" value="true" />
+      <created>1719477970119</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1719477970120</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,7 +425,8 @@
     <MESSAGE value="Re-construct. And finish TODO of timeout waiting/retry mechanism in ICenter.java" />
     <MESSAGE value="Split center to client and source side" />
     <MESSAGE value="fix client cache" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix client cache" />
+    <MESSAGE value="use cli to debug, and fix bugs of core" />
+    <option name="LAST_COMMIT_MESSAGE" value="use cli to debug, and fix bugs of core" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
