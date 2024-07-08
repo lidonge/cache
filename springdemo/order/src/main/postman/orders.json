@@ -1,0 +1,19 @@
+{
+  "order": {
+    "customerId": 1,
+    "orderDate": "2023-07-01",
+    "totalAmount": 261.33
+  },
+  "items":
+  [
+    {
+      "productId": 9,
+      "quantity":5
+    },
+    {
+      "productId": 11,
+      "quantity":7
+    }
+  ]
+
+}

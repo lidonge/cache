@@ -2,8 +2,6 @@ package cache.center;
 
 import cache.*;
 import cache.util.ILogable;
-import cache.util.IRetryHandler;
-import groovy.util.MapEntry;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -115,7 +113,10 @@ public interface ICenter extends IVirtualCenterInClient, IVirtualCenterInSource,
         Map<String, IVirtualClient> clients = getPhysicalCenter().getClients();
         clients.remove(name);
     }
-
+    @Override
+    default boolean isAgreementReached(String compKey) {
+        return getPhysicalCenter().isAgreementReached(compKey);
+    }
     class CallbackStatus {
         boolean hasTimeout = false;
         boolean finished = false;

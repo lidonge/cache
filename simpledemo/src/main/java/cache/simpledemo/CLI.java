@@ -20,7 +20,7 @@ public class CLI {
         Terminal terminal = TerminalBuilder.builder().system(true).build();
         LineReader reader = LineReaderBuilder.builder()
                 .terminal(terminal)
-                .completer(new StringsCompleter("hello", "exit", "help"))
+                .completer(new StringsCompleter("get", "update", "exit", "help"))
                 .build();
 
         String line;
@@ -60,6 +60,7 @@ public class CLI {
     private void cmd_get(List<String> words) {
         int client = Integer.parseInt(words.get(1));
         int key = Integer.parseInt(words.get(2));
+        System.out.println("get clinetIdx keyIdx");
         demo.scenarioClientGet(client,key);
     }
 }

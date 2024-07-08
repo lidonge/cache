@@ -1,0 +1,16 @@
+INSERT INTO product VALUES ('1','FISH','Angelfish','<image src="/images/fish1.gif">Salt Water fish from Australia');
+INSERT INTO product VALUES ('2','FISH','Tiger Shark','<image src="/images/fish4.gif">Salt Water fish from Australia');
+INSERT INTO product VALUES ('3','FISH', 'Koi','<image src="/images/fish3.gif">Fresh Water fish from Japan');
+INSERT INTO product VALUES ('4','FISH', 'Goldfish','<image src="/images/fish2.gif">Fresh Water fish from China');
+INSERT INTO product VALUES ('5','DOGS','Bulldog','<image src="/images/dog2.gif">Friendly dog from England');
+INSERT INTO product VALUES ('6','DOGS','Poodle','<image src="/images/dog6.gif">Cute dog from France');
+INSERT INTO product VALUES ('7','DOGS', 'Dalmation','<image src="/images/dog5.gif">Great dog for a Fire Station');
+INSERT INTO product VALUES ('8','DOGS', 'Golden Retriever','<image src="/images/dog1.gif">Great family dog');
+INSERT INTO product VALUES ('9','DOGS', 'Labrador Retriever','<image src="/images/dog5.gif">Great hunting dog');
+INSERT INTO product VALUES ('10','DOGS', 'Chihuahua','<image src="/images/dog4.gif">Great companion dog');
+INSERT INTO product VALUES ('11','REPTILES','Rattlesnake','<image src="/images/snake1.gif">Doubles as a watch dog');
+INSERT INTO product VALUES ('12','REPTILES','Iguana','<image src="/images/lizard1.gif">Friendly green friend');
+INSERT INTO product VALUES ('13','CATS','Manx','<image src="/images/cat2.gif">Great for reducing mouse populations');
+INSERT INTO product VALUES ('14','CATS','Persian','<image src="/images/cat1.gif">Friendly house cat, doubles as a princess');
+INSERT INTO product VALUES ('15','BIRDS','Amazon Parrot','<image src="/images/bird2.gif">Great companion for up to 75 years');
+INSERT INTO product VALUES ('16','BIRDS','Finch','<image src="/images/bird1.gif">Great stress reliever');

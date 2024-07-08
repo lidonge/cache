@@ -2,18 +2,16 @@ package cache.simpledemo;
 
 
 import cache.ICacheData;
-import cache.ICenterCacheData;
 import cache.ICompositeKey;
+import cache.client.IPhysicalCache;
+import cache.impls.client.CaffeineClientCache;
 import cache.simpledemo.impls.CompKey;
+import cache.simpledemo.impls.client.*;
 import cache.util.ILogable;
 import cache.client.IBusinessService;
 import cache.IClientCacheData;
 import cache.client.ServiceCallException;
 import cache.simpledemo.impls.DemoCacheData;
-import cache.simpledemo.impls.client.Client;
-import cache.simpledemo.impls.client.ClientCache;
-import cache.simpledemo.impls.client.PhysicalClientCache;
-import cache.simpledemo.impls.client.VirtualCenterInClient;
 import cache.simpledemo.impls.source.Center;
 import cache.simpledemo.impls.source.Source;
 import cache.simpledemo.impls.source.VirtualCenterInSource;
@@ -30,7 +28,8 @@ public class AllInOneDemo implements ILogable {
     private int clientCount = 2;
     private ICompositeKey keys[] = new ICompositeKey[]{
             new CompKey("user:0"),
-            new CompKey("user:1")
+            new CompKey("user:1"),
+            new CompKey("user:2")
     };
     private ICompositeKey keys_1 = new ICompositeKey() {
         String[] keys = new String[]{"categorize", "type", "name"};
@@ -150,7 +149,8 @@ public class AllInOneDemo implements ILogable {
     }
 
     Client initClient() {
-        PhysicalClientCache pcc = new PhysicalClientCache();
+//        IPhysicalCache pcc = new PhysicalClientCache();
+        IPhysicalCache pcc = new CaffeineClientCache();
         ClientCache cache = new ClientCache(pcc);
 
         Client ret = new Client(true, cache);
@@ -160,12 +160,10 @@ public class AllInOneDemo implements ILogable {
                 return cacheData == null ? null : cacheData.clone();
             }
         };
-        pcc.setVirtualCenter(virtualCenterInClient);
         virtualCenterInClient.setCenter(center);
 //        virtualCenterInClient.registerClient(ret.getName(), ret);
 
         cache.setClient(ret);
-        pcc.setClient(ret);
         return ret;
     }
 }

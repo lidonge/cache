@@ -59,7 +59,7 @@ public interface IPhysicalCenter {
      * Depended on policy, waiting until timeout.
      * @return if not timeout.
      */
-    boolean keepWaitAgreement(String compKey);
+    boolean isKeepWaitAgreement(String compKey);
 
     /**
      * Get agreement timeout.
